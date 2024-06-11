@@ -1,6 +1,6 @@
 package;
 
-import flixel.FlxBasic;
+import systems.PlayerInventory;
 import systems.crafting.CraftingWorldPickup.CraftingMaterialWorldPickup;
 import systems.WorldPickupSystem;
 import systems.GrassSystem;
@@ -19,6 +19,7 @@ class PlayState extends FlxState {
 	var player:Player;
 	var grassSystem:GrassSystem;
 	var worldPickupSystem:WorldPickupSystem;
+	var inventory:PlayerInventory;
 
 	override public function create():Void {
 		super.create();
@@ -28,6 +29,7 @@ class PlayState extends FlxState {
 		inputManager = new InputManager();
 		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
+		inventory = new PlayerInventory();
 		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);
 		player = new Player(inputManager, grassSystem);
 
@@ -59,6 +61,7 @@ class PlayState extends FlxState {
 
 	private function playerToWorldPickupOverlap(a:Player, b:CraftingMaterialWorldPickup):Void {
 		if (b.canBeCollected) {
+			inventory.addPickup(b.materialDefinition);
 			b.kill();
 		}
 	}

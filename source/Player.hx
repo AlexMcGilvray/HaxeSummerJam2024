@@ -1,3 +1,4 @@
+import systems.PlayerInventory;
 import systems.GrassSystem;
 import systems.InputManager;
 import flixel.FlxSprite;

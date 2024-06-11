@@ -7,14 +7,13 @@ import flixel.FlxSprite;
 
 class CraftingMaterialWorldPickup extends FlxSprite {
 	public var canBeCollected:Bool = false;
+	public var materialDefinition(default, null):ICraftingMaterialDefinition;
 
 	public function new(materialDefinition:ICraftingMaterialDefinition, x:Float = 0, y:Float = 0) {
-		super();
+		super(x, y);
 
+		this.materialDefinition = materialDefinition;
 		materialDefinition.setupMaterialWorldDropGraphic(this);
-
-		this.x = x;
-		this.y = y;
 
 		var xOffset = (Math.random() * 2 - 1) * 10;
 		var yOffset = 40 + Math.random() * 15;
