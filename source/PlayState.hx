@@ -1,6 +1,7 @@
 package;
 
 import systems.PlayerInventory;
+import systems.PlayerInventoryUI;
 import systems.crafting.CraftingWorldPickup.CraftingMaterialWorldPickup;
 import systems.WorldPickupSystem;
 import systems.GrassSystem;
@@ -20,6 +21,7 @@ class PlayState extends FlxState {
 	var grassSystem:GrassSystem;
 	var worldPickupSystem:WorldPickupSystem;
 	var inventory:PlayerInventory;
+	var playerInventoryUI:PlayerInventoryUI;
 
 	override public function create():Void {
 		super.create();
@@ -30,6 +32,7 @@ class PlayState extends FlxState {
 		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
 		inventory = new PlayerInventory();
+		playerInventoryUI = new PlayerInventoryUI(inventory);
 		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);
 		player = new Player(inputManager, grassSystem);
 
@@ -44,6 +47,7 @@ class PlayState extends FlxState {
 		add(grassTuftEmitter);
 		add(worldPickupSystem);
 		add(gameHUD);
+		add(playerInventoryUI);
 
 		grassSystem.populateWorld(world.getTileMap());
 

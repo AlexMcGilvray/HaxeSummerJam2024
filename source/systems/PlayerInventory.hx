@@ -9,6 +9,10 @@ class PlayerInventory {
 		worldPickups = new Map<String, Array<ICraftingMaterialDefinition>>();
 	}
 
+	public function getWorldPickups():Map<String, Array<ICraftingMaterialDefinition>> {
+		return worldPickups;
+	}
+
 	public function addPickup(pickup:ICraftingMaterialDefinition) {
 		if (!worldPickups.exists(pickup.getMaterialName())) {
 			worldPickups[pickup.getMaterialName()] = new Array<ICraftingMaterialDefinition>();

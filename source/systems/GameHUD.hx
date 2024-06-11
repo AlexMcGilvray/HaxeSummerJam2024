@@ -13,7 +13,7 @@ class GameHUD extends FlxTypedGroup<FlxSprite> {
 	public function new() {
 		super();
 		testText = new FlxBitmapText(10, 10, "Testing out a new project");
-		add(testText);
+		// add(testText);
 
 		forEach(function(sprite) {
 			sprite.scrollFactor.set(0, 0);
