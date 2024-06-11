@@ -2,7 +2,6 @@ package systems;
 
 import flixel.FlxG;
 import util.SimpleAnimatedVFXController;
-import openfl.utils.IAssetCache;
 import flixel.math.FlxPoint;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -26,7 +25,6 @@ class GrassTuft extends FlxSprite {
 }
 
 class GrassSystem extends FlxTypedGroup<GrassTuft> {
-	// private var grassTile:Array<FlxTile>;
 	private var grassTufts:Array<GrassTuft>; // todo if all this system holds is grass tufts we don't need this second collection
 	var grassTuftEmitter:GrassTuftEmitter;
 
@@ -45,11 +43,6 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 	}
 
 	public function populateWorld(tileMap:FlxTilemap) {
-		// for (i in 0...tileMap.widthInTiles * tileMap.heightInTiles) {
-		// 	if ( tileMap.getTileByIndex(i) == 0)
-		//         {grassTile.push(tileMap.gettil))}
-		// }
-
 		function isTileValid(x:Int, y:Int):Bool {
 			if (tileMap.getTile(x, y) == 0) {
 				return true;
@@ -77,6 +70,8 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 			}
 		}
 
+		// try to spawn N grass clusters
+		//  todo currently no bailout if we get stuck
 		var numGrassToSpawn = 100;
 		var randomSpawnPoint = new FlxPoint();
 
@@ -88,16 +83,12 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 				continue;
 			}
 
-			var width = Std.int(Math.random() * 15);
-			var height = Std.int(Math.random() * 15);
+			var width = Std.int(Math.random() * 10);
+			var height = Std.int(Math.random() * 10);
 			spawnTilesInGrid(Std.int(randomSpawnPoint.x), Std.int(randomSpawnPoint.y), width, height);
 
 			randomSpawnPoint.x = randomSpawnPoint.x * tileMap.tileWidth;
 			randomSpawnPoint.y = randomSpawnPoint.y * tileMap.tileHeight;
-			// var grassTuft = new GrassTuft();
-			// grassTuft.x = randomSpawnPoint.x;
-			// grassTuft.y = randomSpawnPoint.y;
-			// add(grassTuft);
 			numGrassToSpawn--; // if successfully spawned
 		}
 	}
