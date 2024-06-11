@@ -5,7 +5,7 @@ import flixel.FlxSprite;
 
 interface ICraftingMaterialDefinition {
 	public function getMaterialName():String;
-	public function getMaterialWorldDropGraphic():FlxSprite;
+	public function setupMaterialWorldDropGraphic(sprite:FlxSprite):Void;
 	public function getMaterialUIGraphic():FlxSprite;
 }
 
@@ -16,10 +16,8 @@ class CMPlantEssence implements ICraftingMaterialDefinition {
 		return "Plant Essence";
 	}
 
-	public function getMaterialWorldDropGraphic():FlxSprite {
-		var sprite = new FlxSprite();
+	public function setupMaterialWorldDropGraphic(sprite:FlxSprite):Void {
 		sprite.makeGraphic(16, 16, FlxColor.PINK);
-		return sprite;
 	}
 
 	public function getMaterialUIGraphic():FlxSprite {

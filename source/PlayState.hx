@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxBasic;
+import systems.crafting.CraftingWorldPickup.CraftingMaterialWorldPickup;
 import systems.WorldPickupSystem;
 import systems.GrassSystem;
 import flixel.FlxG;
@@ -52,5 +54,12 @@ class PlayState extends FlxState {
 
 	override public function update(elapsed:Float):Void {
 		super.update(elapsed);
+		FlxG.overlap(player, worldPickupSystem, playerToWorldPickupOverlap);
+	}
+
+	private function playerToWorldPickupOverlap(a:Player, b:CraftingMaterialWorldPickup):Void {
+		if (b.canBeCollected) {
+			b.kill();
+		}
 	}
 }
