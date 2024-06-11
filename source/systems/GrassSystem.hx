@@ -41,7 +41,7 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 			var grassTuft = new GrassTuft();
 			grassTuft.x = x * grassTuft.width;
 			grassTuft.y = y * grassTuft.height;
-			grassTuft.animation.curAnim.curFrame = x % grassTuft.animation.curAnim.numFrames;
+			grassTuft.animation.curAnim.curFrame = Std.int((x + Math.random() * 3) % grassTuft.animation.curAnim.numFrames);
 			grassTufts.push(grassTuft);
 			add(grassTuft);
 		}
