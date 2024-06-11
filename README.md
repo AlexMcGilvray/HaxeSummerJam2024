@@ -7,4 +7,5 @@ My entry for the haxe summer jam
 
 # Screenshots
 
-![docs/screenshots/2024-06-11 15_57_05.png](docs/screenshots/2024-06-11 15_57_05.png)
+![docs/screenshots/2024-06-11-15_57_05.png](docs/screenshots/2024-06-11-15_57_05.png)
+
