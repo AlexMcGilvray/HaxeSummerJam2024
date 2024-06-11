@@ -4,11 +4,6 @@ The main point of the game is to just plant a large garden by casting plant spel
 
 Due to time constraints there's currently no win/lose goal. You just gradually make a larger and more varied garden.
 
-# Reference images
-
-![images/IMG_20240610_160610.jpg](images/IMG_20240610_160626.jpg)
-![images/IMG_20240610_160610.jpg](images/IMG_20240610_160610.jpg)
-
 # Milestone 1 goal : basic moving player and world
 
 - [DONE] Player that moves around
@@ -17,4 +12,9 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  - Grass randomly emits dummy materials
 
  # Milestone 2 goal : plant spells and materials
+
+ # Reference images
+
+![images/IMG_20240610_160610.jpg](images/IMG_20240610_160626.jpg)
+![images/IMG_20240610_160610.jpg](images/IMG_20240610_160610.jpg)
 

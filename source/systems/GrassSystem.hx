@@ -1,5 +1,7 @@
 package systems;
 
+import systems.crafting.CraftingWorldPickup.CraftingMaterialWorldPickup;
+import systems.crafting.CraftingMaterial.CMPlantEssence;
 import flixel.FlxG;
 import util.SimpleAnimatedVFXController;
 import flixel.math.FlxPoint;
@@ -20,20 +22,35 @@ class GrassTuftEmitter extends SimpleAnimatedVFXController {
 }
 
 class GrassTuft extends FlxSprite {
-	public function new() {
+	var worldPickupSystem:WorldPickupSystem;
+
+	public function new(worldPickupSystem:WorldPickupSystem) {
 		super();
+		this.worldPickupSystem = worldPickupSystem;
 		loadGraphic("assets/images/grass_01.png", true, 16, 16);
 		animation.add("idle", [0, 1, 2, 3, 3, 3, 2, 1, 0, 0], 12);
 		animation.play("idle");
+	}
+
+	override function kill() {
+		super.kill();
+		// roll dice to see if we spawn a material pickup
+		if (Math.random() > 0.8) {
+			var matInterface = new CMPlantEssence();
+			var pickup = new CraftingMaterialWorldPickup(matInterface, this.x, this.y);
+			worldPickupSystem.addWorldPickup(pickup);
+		}
 	}
 }
 
 class GrassSystem extends FlxTypedGroup<GrassTuft> {
 	var grassTuftEmitter:GrassTuftEmitter;
+	var worldPickupSystem:WorldPickupSystem;
 
-	public function new(grassTuftEmitter:GrassTuftEmitter) {
+	public function new(grassTuftEmitter:GrassTuftEmitter, worldPickupSystem:WorldPickupSystem) {
 		super();
 		this.grassTuftEmitter = grassTuftEmitter;
+		this.worldPickupSystem = worldPickupSystem;
 	}
 
 	public function cutGrass(cutSprite:FlxSprite) {
@@ -54,7 +71,9 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 		}
 
 		function spawnGrassTuft(x:Int, y:Int) {
-			var grassTuft = new GrassTuft();
+			var grassTuft = new GrassTuft(worldPickupSystem);
+			// will matter later when we regenerate grass but that means we need a parameterless ctro
+			// var grassTuft = recycle(GrassTuft.new);
 			grassTuft.x = x * grassTuft.width;
 			grassTuft.y = y * grassTuft.height;
 			// set the animation so we get a kind of offset rolling wind effect on the grass

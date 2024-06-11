@@ -1,5 +1,6 @@
 package;
 
+import systems.WorldPickupSystem;
 import systems.GrassSystem;
 import flixel.FlxG;
 import systems.InputManager;
@@ -15,6 +16,7 @@ class PlayState extends FlxState {
 	var inputManager:InputManager;
 	var player:Player;
 	var grassSystem:GrassSystem;
+	var worldPickupSystem:WorldPickupSystem;
 
 	override public function create():Void {
 		super.create();
@@ -23,7 +25,8 @@ class PlayState extends FlxState {
 		world = new World();
 		inputManager = new InputManager();
 		var grassTuftEmitter = new GrassTuftEmitter();
-		grassSystem = new GrassSystem(grassTuftEmitter);
+		worldPickupSystem = new WorldPickupSystem();
+		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);
 		player = new Player(inputManager, grassSystem);
 
 		// cameraManager.registerWithUICamera(gameHUD);
@@ -35,6 +38,7 @@ class PlayState extends FlxState {
 		add(player);
 		add(grassSystem);
 		add(grassTuftEmitter);
+		add(worldPickupSystem);
 		add(gameHUD);
 
 		grassSystem.populateWorld(world.getTileMap());
