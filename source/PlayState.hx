@@ -1,5 +1,7 @@
 package;
 
+import systems.GrassSystem;
+import flixel.FlxG;
 import systems.InputManager;
 import systems.World;
 import systems.CameraManager;
@@ -12,23 +14,34 @@ class PlayState extends FlxState {
 	var world:World;
 	var inputManager:InputManager;
 	var player:Player;
+	var grassSystem:GrassSystem;
 
 	override public function create():Void {
 		super.create();
-		cameraManager = new CameraManager();
+		// cameraManager = new CameraManager();
 		gameHUD = new GameHUD();
 		world = new World();
 		inputManager = new InputManager();
 		player = new Player(inputManager);
+		grassSystem = new GrassSystem();
 
-		cameraManager.registerWithUICamera(gameHUD);
+		// cameraManager.registerWithUICamera(gameHUD);
 
 		// non-visual components/systems
 		add(inputManager);
 		// visible draw-order/dependent systems
 		add(world);
+		add(grassSystem);
 		add(player);
 		add(gameHUD);
+
+		grassSystem.populateWorld(world.getTileMap());
+
+		world.getTileMap().follow();
+		// FlxG.cameras.follow(player);
+		FlxG.camera.follow(player);
+		// FlxG.camera.zoom = .25;
+		// FlxG.worldBounds.set(0, 0, world.getWidth() * 16, world.getHeight() * 16);
 	}
 
 	override public function update(elapsed:Float):Void {

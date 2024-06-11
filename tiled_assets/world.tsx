@@ -2,9 +2,9 @@
 <tileset version="1.10" tiledversion="1.10.2" name="world" tilewidth="16" tileheight="16" tilecount="256" columns="16">
  <image source="../assets/images/tilemap_world.png" width="256" height="256"/>
  <wangsets>
-  <wangset name="Grass" type="corner" tile="-1">
-   <wangcolor name="light" color="#ff0000" tile="-1" probability="1"/>
-   <wangcolor name="dark" color="#00ff00" tile="-1" probability="1"/>
+  <wangset name="GrassToGrass" type="corner" tile="-1">
+   <wangcolor name="lightgrass" color="#ff0000" tile="-1" probability="1"/>
+   <wangcolor name="darkgrass" color="#00ff00" tile="-1" probability="1"/>
    <wangtile tileid="0" wangid="0,1,0,1,0,1,0,1"/>
    <wangtile tileid="16" wangid="0,2,0,2,0,2,0,2"/>
    <wangtile tileid="48" wangid="0,1,0,2,0,1,0,1"/>

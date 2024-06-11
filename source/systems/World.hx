@@ -7,6 +7,18 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class World extends FlxTypedGroup<FlxTilemap> {
 	var worldTileMap:FlxTilemap;
 
+	public function getTileMap() {
+		return worldTileMap;
+	}
+
+	public function getWidth() {
+		return worldTileMap.width;
+	}
+
+	public function getHeight() {
+		return worldTileMap.height;
+	}
+
 	public function new() {
 		super();
 		worldTileMap = new FlxTilemap();

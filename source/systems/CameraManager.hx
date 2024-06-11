@@ -6,6 +6,7 @@ import flixel.FlxG;
 
 class CameraManager {
 	private var uiCamera(default, null):FlxCamera;
+	private var mainCamera(default, null):FlxCamera;
 
 	public function new() {
 		initCameras();

@@ -14,6 +14,10 @@ class GameHUD extends FlxTypedGroup<FlxSprite> {
 		super();
 		testText = new FlxBitmapText(10, 10, "Testing out a new project");
 		add(testText);
+
+		forEach(function(sprite) {
+			sprite.scrollFactor.set(0, 0);
+		});
 	}
 
 	override function update(elapsed:Float) {}

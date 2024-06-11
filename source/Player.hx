@@ -8,12 +8,12 @@ class Player extends FlxSprite {
 	private static inline var ANIM_WALK_LEFT = "walk_left";
 	private static inline var ANIM_WALK_RIGHT = "walk_right";
 
-	public var playerSpeed(default, null):Float = 50;
+	public var playerSpeed(default, null):Float = 125;
 
 	private var inputManager:InputManager;
 
 	public function new(inputManager:InputManager) {
-		super();
+		super(300, 200);
 
 		this.inputManager = inputManager;
 
