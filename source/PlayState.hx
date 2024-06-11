@@ -22,7 +22,8 @@ class PlayState extends FlxState {
 		gameHUD = new GameHUD();
 		world = new World();
 		inputManager = new InputManager();
-		grassSystem = new GrassSystem();
+		var grassTuftEmitter = new GrassTuftEmitter();
+		grassSystem = new GrassSystem(grassTuftEmitter);
 		player = new Player(inputManager, grassSystem);
 
 		// cameraManager.registerWithUICamera(gameHUD);
@@ -31,8 +32,9 @@ class PlayState extends FlxState {
 		add(inputManager);
 		// visible draw-order/dependent systems
 		add(world);
-		add(grassSystem);
 		add(player);
+		add(grassSystem);
+		add(grassTuftEmitter);
 		add(gameHUD);
 
 		grassSystem.populateWorld(world.getTileMap());

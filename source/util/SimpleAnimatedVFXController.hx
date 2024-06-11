@@ -10,11 +10,12 @@ abstract class SimpleAnimatedVFXController extends FlxTypedGroup<FlxSprite> {
 
 	public abstract function configureSprite(sprite:FlxSprite):Void;
 
-	public function addEmitter(newVFX:FlxSprite, x:Float, y:Float) {
-		var newVFX = recycle(FlxSprite);
-		newVFX.x = x;
-		newVFX.y = y;
+	public function addEmitter(x:Float, y:Float) {
+		var newVFX = new FlxSprite(); // todo recycle(FlxSprite);
 		configureSprite(newVFX);
+		newVFX.x = x - newVFX.width / 2;
+		newVFX.y = y - newVFX.height / 2;
+		add(newVFX);
 	}
 
 	override function update(elapsed:Float) {

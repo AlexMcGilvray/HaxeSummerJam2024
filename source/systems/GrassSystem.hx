@@ -10,8 +10,12 @@ import flixel.FlxSprite;
 class GrassTuftEmitter extends SimpleAnimatedVFXController {
 	public function configureSprite(sprite:FlxSprite) {
 		sprite.loadGraphic("assets/images/grass_02_cut_vfx.png", true, 64, 64);
-		sprite.animation.add("main", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+		var randomFrameRate = Std.int(Math.random() * 6 + 8);
+		sprite.animation.add("main", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], randomFrameRate, false);
 		sprite.animation.play("main");
+		var randomScale = Math.random() * 0.5 + 1;
+		sprite.scale.x = randomScale;
+		sprite.scale.y = randomScale;
 	}
 }
 
@@ -25,17 +29,16 @@ class GrassTuft extends FlxSprite {
 }
 
 class GrassSystem extends FlxTypedGroup<GrassTuft> {
-	private var grassTufts:Array<GrassTuft>; // todo if all this system holds is grass tufts we don't need this second collection
 	var grassTuftEmitter:GrassTuftEmitter;
 
-	public function new() {
+	public function new(grassTuftEmitter:GrassTuftEmitter) {
 		super();
-		grassTufts = new Array<GrassTuft>();
-		grassTuftEmitter = new GrassTuftEmitter();
+		this.grassTuftEmitter = grassTuftEmitter;
 	}
 
 	public function cutGrass(cutSprite:FlxSprite) {
 		function doOverlap(objectA:FlxSprite, objectB:FlxSprite) {
+			grassTuftEmitter.addEmitter(objectA.x + objectA.width / 2, objectA.y + objectA.height / 2);
 			objectA.kill();
 		}
 
@@ -56,7 +59,6 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 			grassTuft.y = y * grassTuft.height;
 			// set the animation so we get a kind of offset rolling wind effect on the grass
 			grassTuft.animation.curAnim.curFrame = Std.int((x + Math.random() * 3) % grassTuft.animation.curAnim.numFrames);
-			grassTufts.push(grassTuft);
 			add(grassTuft);
 		}
 
