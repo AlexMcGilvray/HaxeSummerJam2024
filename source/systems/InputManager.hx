@@ -6,8 +6,9 @@ import flixel.FlxG;
 
 class InputManager extends FlxBasic {
 	public var direction:FlxPoint;
+	public var digitalButton1PressedThisFrame:Bool;
 
-	private var inputHandled:Bool;
+	private var movementInputHandled:Bool;
 
 	public function new() {
 		super();
@@ -20,34 +21,40 @@ class InputManager extends FlxBasic {
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
-		inputHandled = false;
+		movementInputHandled = false;
 		keyboardUpdate(elapsed);
 		gamepadUpdate(elapsed);
-		if (!inputHandled) {
+		if (!movementInputHandled) {
 			direction.x = 0;
 			direction.y = 0;
 		}
 	}
 
 	private function gamepadUpdate(elapsed:Float) {
-		if (inputHandled) {
-			return;
-		}
 		if (FlxG.gamepads.lastActive == null) {
 			return;
 		}
-		var firstGamepadAnalog = FlxG.gamepads.lastActive.analog.value;
+
+		var gamepad = FlxG.gamepads.lastActive;
+		digitalButton1PressedThisFrame = gamepad.justPressed.A;
+
+		if (movementInputHandled) {
+			return;
+		}
+		var firstGamepadAnalog = gamepad.analog.value;
 		var leftStickX = firstGamepadAnalog.LEFT_STICK_X;
 		var leftStickY = firstGamepadAnalog.LEFT_STICK_Y;
 		if (Math.abs(leftStickX) > 0.0 || Math.abs(leftStickY) > 0.0) {
 			direction.x = leftStickX;
 			direction.y = leftStickY;
-			inputHandled = true;
+			movementInputHandled = true;
 		}
 	}
 
 	private function keyboardUpdate(elapsed:Float) {
-		if (inputHandled) {
+		digitalButton1PressedThisFrame = FlxG.keys.justPressed.CONTROL;
+
+		if (movementInputHandled) {
 			return;
 		}
 
@@ -77,6 +84,6 @@ class InputManager extends FlxBasic {
 			direction.x = 0;
 		}
 
-		inputHandled = up || down || left || right;
+		movementInputHandled = up || down || left || right;
 	}
 }

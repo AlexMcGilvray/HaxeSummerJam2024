@@ -22,8 +22,8 @@ class PlayState extends FlxState {
 		gameHUD = new GameHUD();
 		world = new World();
 		inputManager = new InputManager();
-		player = new Player(inputManager);
 		grassSystem = new GrassSystem();
+		player = new Player(inputManager, grassSystem);
 
 		// cameraManager.registerWithUICamera(gameHUD);
 

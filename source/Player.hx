@@ -1,3 +1,4 @@
+import systems.GrassSystem;
 import systems.InputManager;
 import flixel.FlxSprite;
 
@@ -11,11 +12,13 @@ class Player extends FlxSprite {
 	public var playerSpeed(default, null):Float = 125;
 
 	private var inputManager:InputManager;
+	private var grassSystem:GrassSystem;
 
-	public function new(inputManager:InputManager) {
+	public function new(inputManager:InputManager, grassSystem:GrassSystem) {
 		super(300, 200);
 
 		this.inputManager = inputManager;
+		this.grassSystem = grassSystem;
 
 		loadGraphic(AssetPaths.player_walking_spritesheet__png, true, 32, 32);
 
@@ -29,6 +32,11 @@ class Player extends FlxSprite {
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
+
+		if (inputManager.digitalButton1PressedThisFrame) {
+			grassSystem.cutGrass(this);
+		}
+
 		if (inputManager.moveInputRecievedThisFrame()) {
 			// determine most appropriate animation to play
 			if (Math.abs(inputManager.direction.x) >= Math.abs(inputManager.direction.y)) {
