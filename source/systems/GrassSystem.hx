@@ -1,10 +1,20 @@
 package systems;
 
+import flixel.FlxG;
+import util.SimpleAnimatedVFXController;
 import openfl.utils.IAssetCache;
 import flixel.math.FlxPoint;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
+
+class GrassTuftEmitter extends SimpleAnimatedVFXController {
+	public function configureSprite(sprite:FlxSprite) {
+		sprite.loadGraphic("assets/images/grass_02_cut_vfx.png", true, 64, 64);
+		sprite.animation.add("main", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+		sprite.animation.play("main");
+	}
+}
 
 class GrassTuft extends FlxSprite {
 	public function new() {
@@ -17,11 +27,21 @@ class GrassTuft extends FlxSprite {
 
 class GrassSystem extends FlxTypedGroup<GrassTuft> {
 	// private var grassTile:Array<FlxTile>;
-	private var grassTufts:Array<GrassTuft>;
+	private var grassTufts:Array<GrassTuft>; // todo if all this system holds is grass tufts we don't need this second collection
+	var grassTuftEmitter:GrassTuftEmitter;
 
 	public function new() {
 		super();
 		grassTufts = new Array<GrassTuft>();
+		grassTuftEmitter = new GrassTuftEmitter();
+	}
+
+	public function cutGrass(cutSprite:FlxSprite) {
+		function doOverlap(objectA:FlxSprite, objectB:FlxSprite) {
+			objectA.kill();
+		}
+
+		FlxG.overlap(this, cutSprite, doOverlap);
 	}
 
 	public function populateWorld(tileMap:FlxTilemap) {
@@ -41,6 +61,7 @@ class GrassSystem extends FlxTypedGroup<GrassTuft> {
 			var grassTuft = new GrassTuft();
 			grassTuft.x = x * grassTuft.width;
 			grassTuft.y = y * grassTuft.height;
+			// set the animation so we get a kind of offset rolling wind effect on the grass
 			grassTuft.animation.curAnim.curFrame = Std.int((x + Math.random() * 3) % grassTuft.animation.curAnim.numFrames);
 			grassTufts.push(grassTuft);
 			add(grassTuft);
