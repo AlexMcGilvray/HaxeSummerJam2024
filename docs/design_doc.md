@@ -14,7 +14,7 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  # Milestone 2 goal : plant spells and materials
 
 - [DONE] Crafting material definition
-- Player can pickup crafting materials
+- [DONE] Player can pickup crafting materials
  - [DONE] World pickup system
  - Player inventory system for tracking what materials have been picked up
   - UI representation of player inventory?
