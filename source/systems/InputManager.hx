@@ -7,6 +7,7 @@ import flixel.FlxG;
 class InputManager extends FlxBasic {
 	public var direction:FlxPoint;
 	public var digitalButton1PressedThisFrame:Bool;
+	public var digitalButton2PressedThisFrame:Bool;
 
 	private var movementInputHandled:Bool;
 
@@ -37,6 +38,7 @@ class InputManager extends FlxBasic {
 
 		var gamepad = FlxG.gamepads.lastActive;
 		digitalButton1PressedThisFrame = gamepad.justPressed.A;
+		digitalButton2PressedThisFrame = gamepad.justPressed.B;
 
 		if (movementInputHandled) {
 			return;
@@ -52,7 +54,8 @@ class InputManager extends FlxBasic {
 	}
 
 	private function keyboardUpdate(elapsed:Float) {
-		digitalButton1PressedThisFrame = FlxG.keys.justPressed.CONTROL;
+		digitalButton1PressedThisFrame = FlxG.keys.justPressed.SPACE;
+		digitalButton2PressedThisFrame = FlxG.keys.justPressed.F;
 
 		if (movementInputHandled) {
 			return;

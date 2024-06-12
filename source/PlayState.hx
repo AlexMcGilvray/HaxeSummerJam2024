@@ -32,7 +32,7 @@ class PlayState extends FlxState {
 		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
 		inventory = new PlayerInventory();
-		playerInventoryUI = new PlayerInventoryUI(inventory);
+		playerInventoryUI = new PlayerInventoryUI(inventory, inputManager);
 		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);
 		player = new Player(inputManager, grassSystem);
 

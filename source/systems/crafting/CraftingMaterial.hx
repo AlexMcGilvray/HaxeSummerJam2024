@@ -31,7 +31,7 @@ class CMPlantEssenceX implements ICraftingMaterialDefinition {
 	public function new() {} // could make the argument these interfaces could be static?
 
 	public function getMaterialName():String {
-		return "Plant Essence X";
+		return "Purple surprise";
 	}
 
 	public function setupMaterialWorldDropGraphic(sprite:FlxSprite):Void {
