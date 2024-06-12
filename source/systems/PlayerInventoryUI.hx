@@ -1,9 +1,6 @@
 package systems;
 
 import flixel.text.FlxBitmapText;
-import flixel.FlxG;
-import flixel.FlxCamera;
-import flixel.FlxBasic;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -30,6 +27,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 			}
 			return count;
 		}
+
 		for (key in stuff.keys()) {
 			if (items.exists(key)) {
 				var s = stuff[key].length;
@@ -40,7 +38,6 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 				add(newText);
 				newText.scrollFactor.x = 0;
 				newText.scrollFactor.y = 0;
-				// items[x] = new FlxBitmapText(10, 10 + getMapSize() * itemYOffset, x + " " + getMapSize());
 			}
 		}
 	}
