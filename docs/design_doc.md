@@ -11,13 +11,15 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 - [DONE] Grass system with cuttable grass
  - [DONE] Grass randomly emits dummy materials
 
- # Milestone 2 goal : plant spells and materials
+# Milestone 2 goal : materials
 
 - [DONE] Crafting material definition
 - [DONE] Player can pickup crafting materials
  - [DONE] World pickup system
- - Player inventory system for tracking what materials have been picked up
-  - UI representation of player inventory?
+ - [DONE] Player inventory system for tracking what materials have been picked up
+  - [DONE] UI representation of player inventory?
+
+# Milestone 2 goal : crafting plant spells
 
  # Reference images
 
