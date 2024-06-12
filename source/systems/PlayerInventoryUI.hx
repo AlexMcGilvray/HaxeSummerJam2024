@@ -5,8 +5,18 @@ import flixel.text.FlxBitmapText;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+class MaterialTextPair {
+	public var description:FlxBitmapText;
+	public var value:FlxBitmapText;
+
+	public function new(description:FlxBitmapText, value:FlxBitmapText) {
+		this.description = description;
+		this.value = value;
+	}
+}
+
 class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
-	private var items:Map<String, FlxBitmapText>;
+	private var items:Map<String, MaterialTextPair>;
 	private var playerInventory:PlayerInventory;
 	private var inventoryNote:FlxBitmapText;
 	private var background:FlxSprite;
@@ -20,7 +30,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
 
-		items = new Map<String, FlxBitmapText>();
+		items = new Map<String, MaterialTextPair>();
 
 		background = new FlxSprite(10, 10);
 		background.scrollFactor.x = 0;
@@ -61,14 +71,28 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 		// very inefficient way to redraw the inventory list but hey.. this is a game jam :p
 		for (key in worldPickups.keys()) {
 			if (items.exists(key)) {
-				var s = worldPickups[key].length;
-				items[key].text = key + " " + s;
+				var numWorldPickups = worldPickups[key].length;
+				items[key].description.text = key;
+				items[key].value.text = "" + numWorldPickups;
 			} else {
-				var newText = new FlxBitmapText(16, 24 + getMapSize() * itemYOffset, key + " 1");
-				items.set(key, newText);
-				add(newText);
-				newText.scrollFactor.x = 0;
-				newText.scrollFactor.y = 0;
+				var descriptionText = new FlxBitmapText(16, 24 + getMapSize() * itemYOffset, key);
+				var valueText = new FlxBitmapText(140, 24 + getMapSize() * itemYOffset, "1");
+				var pair = new MaterialTextPair(descriptionText, valueText);
+
+				items.set(key, pair);
+
+				descriptionText.scale.x = 1.5;
+				descriptionText.scale.y = 1.5;
+				descriptionText.scrollFactor.x = 0;
+				descriptionText.scrollFactor.y = 0;
+
+				valueText.scale.x = 1.5;
+				valueText.scale.y = 1.5;
+				valueText.scrollFactor.x = 0;
+				valueText.scrollFactor.y = 0;
+
+				add(descriptionText);
+				add(valueText);
 			}
 		}
 
