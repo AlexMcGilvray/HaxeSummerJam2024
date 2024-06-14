@@ -11,6 +11,7 @@ import systems.World;
 import systems.CameraManager;
 import systems.GameHUD;
 import flixel.FlxState;
+import systems.crafting.CraftingSystem;
 
 class PlayState extends FlxState {
 	var gameHUD:GameHUD;
@@ -22,6 +23,7 @@ class PlayState extends FlxState {
 	var worldPickupSystem:WorldPickupSystem;
 	var inventory:PlayerInventory;
 	var playerInventoryUI:PlayerInventoryUI;
+	var craftingSystem:CraftingSystem;
 
 	override public function create():Void {
 		super.create();
@@ -29,6 +31,7 @@ class PlayState extends FlxState {
 		gameHUD = new GameHUD();
 		world = new World();
 		inputManager = new InputManager();
+		craftingSystem = new CraftingSystem(world);
 		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
 		inventory = new PlayerInventory();

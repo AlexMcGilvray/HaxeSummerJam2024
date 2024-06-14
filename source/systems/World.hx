@@ -1,10 +1,12 @@
 package systems;
 
+import flixel.FlxBasic;
+import systems.plants.PlantBase;
 import openfl.utils.Assets;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
-class World extends FlxTypedGroup<FlxTilemap> {
+class World extends FlxTypedGroup<FlxBasic> {
 	var worldTileMap:FlxTilemap;
 
 	public function getTileMap() {
@@ -17,6 +19,10 @@ class World extends FlxTypedGroup<FlxTilemap> {
 
 	public function getHeight() {
 		return worldTileMap.height;
+	}
+
+	public function addPlantToWorld(plant:PlantBase) {
+		add(plant);
 	}
 
 	public function new() {

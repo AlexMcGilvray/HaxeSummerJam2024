@@ -1,5 +1,7 @@
 package systems;
 
+import flixel.FlxG;
+import flixel.FlxBasic;
 import flixel.util.FlxColor;
 import flixel.text.FlxBitmapText;
 import flixel.FlxSprite;
@@ -15,11 +17,38 @@ class MaterialTextPair {
 	}
 }
 
-class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
-	private var items:Map<String, MaterialTextPair>;
+class CraftingUI extends FlxTypedGroup<FlxSprite> {
 	private var playerInventory:PlayerInventory;
+	private var inputMangager:InputManager;
+
+	private var background:FlxSprite;
+
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager) {
+		super();
+
+		this.playerInventory = playerInventory;
+		this.inputMangager = inputMangager;
+
+		var bgWidth = 300;
+		var bgPadding = 10;
+		background = new FlxSprite(FlxG.width - bgWidth - bgPadding, 10);
+		// background = new FlxSprite(80, 10);
+		background.makeGraphic(250, 200, FlxColor.GRAY);
+		background.scrollFactor.x = 0;
+		background.scrollFactor.y = 0;
+
+		add(background);
+	}
+}
+
+class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
+	private var items:Map<String, MaterialTextPair>;
 	private var inventoryNote:FlxBitmapText;
 	private var background:FlxSprite;
+
+	private var craftingUI:CraftingUI;
+
+	private var playerInventory:PlayerInventory;
 	private var inputMangager:InputManager;
 
 	var itemYOffset = 12;
@@ -29,6 +58,9 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
+
+		craftingUI = new CraftingUI(playerInventory, inputMangager);
+		craftingUI.visible = false;
 
 		items = new Map<String, MaterialTextPair>();
 
@@ -44,6 +76,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 
 		add(background);
 		add(inventoryNote);
+		add(craftingUI);
 	}
 
 	override function update(elapsed:Float) {
@@ -52,6 +85,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 		// enable/disable the crafting materials list ui
 		if (inputMangager.digitalButton2PressedThisFrame) {
 			visible = !visible;
+			craftingUI.visible = visible;
 		}
 
 		function getMapSize():Int {

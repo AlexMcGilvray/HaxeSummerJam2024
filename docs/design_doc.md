@@ -21,6 +21,9 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 
 # Milestone 2 goal : crafting plant spells
 
+- Make a UI screen for crafting things
+- Able to convert materials into placeable plants (crafting)
+
  # Reference images
 
 ![images/IMG_20240610_160610.jpg](images/IMG_20240610_160626.jpg)
