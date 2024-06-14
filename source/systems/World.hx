@@ -9,7 +9,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class World extends FlxTypedGroup<FlxBasic> {
 	var worldTileMap:FlxTilemap;
 
-	public function getTileMap() {
+	public function getTileMap():FlxTilemap {
 		return worldTileMap;
 	}
 

@@ -32,7 +32,6 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		var bgWidth = 300;
 		var bgPadding = 10;
 		background = new FlxSprite(FlxG.width - bgWidth - bgPadding, 10);
-		// background = new FlxSprite(80, 10);
 		background.makeGraphic(250, 200, FlxColor.GRAY);
 		background.scrollFactor.x = 0;
 		background.scrollFactor.y = 0;
@@ -105,7 +104,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
 		// very inefficient way to redraw the inventory list but hey.. this is a game jam :p
 		for (key in worldPickups.keys()) {
 			if (items.exists(key)) {
-				var numWorldPickups = worldPickups[key].length;
+				var numWorldPickups = worldPickups[key].count;
 				items[key].description.text = key;
 				items[key].value.text = "" + numWorldPickups;
 			} else {
