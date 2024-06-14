@@ -1,5 +1,8 @@
 package systems;
 
+import systems.plants.Craftable.ICraftable;
+import flixel.ui.FlxButton;
+import systems.crafting.CraftingSystem;
 import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.util.FlxColor;
@@ -23,20 +26,60 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 
 	private var background:FlxSprite;
 
-	public function new(playerInventory:PlayerInventory, inputMangager:InputManager) {
+	private var craftingSystem:CraftingSystem;
+	private var craftingButtons:Map<ICraftable, FlxButton>;
+	var buttonCountMultiplier = 1;
+
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem) {
 		super();
 
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
+		this.craftingSystem = craftingSystem;
 
+		craftingButtons = new Map<ICraftable, FlxButton>();
+
+		var yStart = 10;
 		var bgWidth = 300;
-		var bgPadding = 10;
-		background = new FlxSprite(FlxG.width - bgWidth - bgPadding, 10);
+		var bgMargin = 10;
+		var yStartWPadding = yStart + 10;
+		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
+
+		background = new FlxSprite(xStartWPadding, yStart);
 		background.makeGraphic(250, 200, FlxColor.GRAY);
 		background.scrollFactor.x = 0;
 		background.scrollFactor.y = 0;
 
 		add(background);
+	}
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+
+		var yStart = 10;
+		var bgWidth = 300;
+		var bgMargin = 10;
+		var yStartWPadding = yStart + 10;
+		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
+		// garbage implementation for now
+		for (key in craftingButtons.keys()) {
+			if (craftingButtons[key].justPressed) {
+				craftingSystem.spawnPlantIntoWorld(key, playerInventory);
+			}
+		}
+
+		function generateButtons() {
+			var buttonStride = 20;
+			for (item in craftingSystem.getAllCraftableTypes(playerInventory)) {
+				if (!craftingButtons.exists(item)) {
+					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
+					craftingButtons.set(item, button);
+					add(button);
+					buttonCountMultiplier++;
+				}
+			}
+		}
+		generateButtons();
 	}
 }
 
@@ -52,13 +95,13 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
 
 	var itemYOffset = 12;
 
-	public function new(playerInventory:PlayerInventory, inputMangager:InputManager) {
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem) {
 		super();
 
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
 
-		craftingUI = new CraftingUI(playerInventory, inputMangager);
+		craftingUI = new CraftingUI(playerInventory, inputMangager, craftingSystem);
 		craftingUI.visible = false;
 
 		items = new Map<String, MaterialTextPair>();

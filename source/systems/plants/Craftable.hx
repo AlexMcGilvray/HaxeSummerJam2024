@@ -1,10 +1,8 @@
 package systems.plants;
 
+import systems.crafting.CraftingMaterial;
 import systems.plants.PlantBase.Plant_Tulip;
 import systems.plants.PlantBase.Plant_Rose;
-import flixel.util.FlxColor;
-import systems.crafting.CraftingMaterial.ICraftingMaterialDefinition;
-import flixel.FlxSprite;
 
 interface ICraftable {
 	public function getBuildRequirements():Map<String, Int>;
@@ -12,11 +10,15 @@ interface ICraftable {
 }
 
 class Craftable_PlantBase implements ICraftable {
-	public function getBuildRequirements():Map<String, Int> {
-		var requirements = new Map<String, Array<ICraftingMaterialDefinition>>();
+	public function new() {}
 
-		// requirements.set()
-		throw new haxe.exceptions.NotImplementedException();
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+		var mat1 = new CMPlantEssence();
+
+		requirements.set(mat1.getMaterialName(), 1);
+
+		return requirements;
 	}
 
 	public function generatePlant():PlantBase
@@ -24,8 +26,15 @@ class Craftable_PlantBase implements ICraftable {
 }
 
 class Craftable_Rose implements ICraftable {
+	public function new() {}
+
 	public function getBuildRequirements():Map<String, Int> {
-		throw new haxe.exceptions.NotImplementedException();
+		var requirements = new Map<String, Int>();
+		var mat1 = new CMPlantEssenceX();
+
+		requirements.set(mat1.getMaterialName(), 1);
+
+		return requirements;
 	}
 
 	public function generatePlant():PlantBase
@@ -33,10 +42,21 @@ class Craftable_Rose implements ICraftable {
 }
 
 class Craftable_Tulip implements ICraftable {
+	public function new() {}
+
 	public function getBuildRequirements():Map<String, Int> {
-		throw new haxe.exceptions.NotImplementedException();
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPlantEssenceX();
+
+		requirements.set(mat1.getMaterialName(), 1);
+		requirements.set(mat2.getMaterialName(), 1);
+
+		return requirements;
 	}
 
-	public function generatePlant():PlantBase
+	public function generatePlant():PlantBase {
 		return new Plant_Tulip();
+	}
 }

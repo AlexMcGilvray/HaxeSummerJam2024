@@ -35,6 +35,18 @@ class PlayerInventory {
 		return true;
 	}
 
+	// public function subtractMaterials2(requirements:Map<String, PlayerInventoryWorldPickupValuePair>) {
+	// 	if (!hasMaterialRequirements(requirements)) {
+	// 		// todo error throw or something (read haxe docs on idiomatic error handling)
+	// 		trace("doesn't have adequate resources to subtract from inventory. Code isn't doing adequate checks.");
+	// 		return;
+	// 	}
+	// 	for (key in requirements.keys()) {
+	// 		// shouldn't need to do a check since this should get caught in the hasMaterialRequirements call
+	// 		worldPickups[key].count = worldPickups[key].count - requirements[key].count;
+	// 	}
+	// }
+
 	public function subtractMaterials(requirements:Map<String, Int>) {
 		if (!hasMaterialRequirements(requirements)) {
 			// todo error throw or something (read haxe docs on idiomatic error handling)
