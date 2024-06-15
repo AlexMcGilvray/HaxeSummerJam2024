@@ -25,8 +25,8 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 
 - [DONE] Make a UI screen for crafting things
 - [DONE] Able to convert materials into placeable plants (crafting)
- - Remember to subtract the resources from the player when crafting
-  - After crafting make sure to refresh the inventory/crafting UI's so they are correct
+ - [DONE] Remember to subtract the resources from the player when crafting
+  - [DONE] After crafting make sure to refresh the inventory/crafting UI's so they are correct
   - [DONE] Buttons need to say what they make
   - [DONE] Make sure we don't accidentally create a bunch of things when clicking a button for each frame
 - [DONE] Object placement system
