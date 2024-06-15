@@ -142,13 +142,17 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
 		add(craftingUI);
 	}
 
+	public function toggleUI() {
+		visible = !visible;
+		craftingUI.visible = visible;
+	}
+
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
 		// enable/disable the crafting materials list ui
 		if (inputMangager.digitalButton2PressedThisFrame) {
-			visible = !visible;
-			craftingUI.visible = visible;
+			toggleUI();
 		}
 
 		function getMapSize():Int {

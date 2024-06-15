@@ -47,6 +47,7 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 - Material art
  - Material 1
  - Material 2
+- After placing a plant, z-sort all the plants
 
 # Game design stuff
 
