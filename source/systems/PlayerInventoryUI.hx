@@ -21,21 +21,23 @@ class MaterialTextPair {
 }
 
 class CraftingUI extends FlxTypedGroup<FlxSprite> {
-	private var playerInventory:PlayerInventory;
-	private var inputMangager:InputManager;
-
 	private var background:FlxSprite;
 
+	private var playerInventory:PlayerInventory;
+	private var inputMangager:InputManager;
 	private var craftingSystem:CraftingSystem;
+	private var objectPlacingSystem:ObjectPlacingSystem;
+
 	private var craftingButtons:Map<ICraftable, FlxButton>;
 	var buttonCountMultiplier = 1;
 
-	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem) {
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem, objectPlacingSystem:ObjectPlacingSystem) {
 		super();
 
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
 		this.craftingSystem = craftingSystem;
+		this.objectPlacingSystem = objectPlacingSystem;
 
 		craftingButtons = new Map<ICraftable, FlxButton>();
 
@@ -53,6 +55,15 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		add(background);
 	}
 
+	function clearAllCraftingButtons() // todo implement me
+	{
+		for (button in craftingButtons) {
+			button.kill();
+		}
+		craftingButtons.clear();
+		buttonCountMultiplier = 1;
+	}
+
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
@@ -62,11 +73,15 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
 		// garbage implementation for now
-		for (key in craftingButtons.keys()) {
-			if (craftingButtons[key].justPressed) {
-				var requirements = key.getBuildRequirements();
-				playerInventory.subtractMaterials(requirements);
-				craftingSystem.spawnPlantIntoWorld(key, playerInventory);
+		if (!objectPlacingSystem.isHoldingObject) {
+			for (key in craftingButtons.keys()) {
+				if (craftingButtons[key].justPressed) {
+					var requirements = key.getBuildRequirements();
+					playerInventory.subtractMaterials(requirements);
+					craftingSystem.spawnPlantIntoWorld(key, playerInventory);
+					clearAllCraftingButtons();
+					break; // important because clearAllCraftingButtons modifies craftingButtons during iteration
+				}
 			}
 		}
 
@@ -75,9 +90,10 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 			for (item in craftingSystem.getAllCraftableTypes(playerInventory)) {
 				if (!craftingButtons.exists(item)) {
 					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
-					craftingButtons.set(item, button);
+					button.text = item.getName();
 					add(button);
 					buttonCountMultiplier++;
+					craftingButtons.set(item, button);
 				}
 			}
 		}
@@ -94,16 +110,18 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
 
 	private var playerInventory:PlayerInventory;
 	private var inputMangager:InputManager;
+	private var objectPlacingSystem:ObjectPlacingSystem;
 
 	var itemYOffset = 12;
 
-	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem) {
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem, objectPlacingSystem:ObjectPlacingSystem) {
 		super();
 
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
+		this.objectPlacingSystem = objectPlacingSystem;
 
-		craftingUI = new CraftingUI(playerInventory, inputMangager, craftingSystem);
+		craftingUI = new CraftingUI(playerInventory, inputMangager, craftingSystem, objectPlacingSystem);
 		craftingUI.visible = false;
 
 		items = new Map<String, MaterialTextPair>();

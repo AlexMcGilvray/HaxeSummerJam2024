@@ -7,6 +7,7 @@ import systems.plants.PlantBase.Plant_Rose;
 interface ICraftable {
 	public function getBuildRequirements():Map<String, Int>;
 	public function generatePlant():PlantBase;
+	public function getName():String;
 }
 
 class Craftable_PlantBase implements ICraftable {
@@ -21,8 +22,13 @@ class Craftable_PlantBase implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase
+	public function generatePlant():PlantBase {
 		return new PlantBase();
+	}
+
+	public function getName() {
+		return "Base Plant";
+	}
 }
 
 class Craftable_Rose implements ICraftable {
@@ -37,8 +43,13 @@ class Craftable_Rose implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase
+	public function generatePlant():PlantBase {
 		return new Plant_Rose();
+	}
+
+	public function getName() {
+		return "Rose";
+	}
 }
 
 class Craftable_Tulip implements ICraftable {
@@ -58,5 +69,9 @@ class Craftable_Tulip implements ICraftable {
 
 	public function generatePlant():PlantBase {
 		return new Plant_Tulip();
+	}
+
+	public function getName() {
+		return "Tulip";
 	}
 }

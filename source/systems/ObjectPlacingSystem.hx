@@ -3,10 +3,14 @@ package systems;
 import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.FlxBasic;
-import flixel.FlxSprite;
 
 class ObjectPlacingSystem extends FlxBasic {
 	public var heldObject(default, null):FlxObject;
+
+	public var isHoldingObject(get, never):Bool;
+
+	function get_isHoldingObject()
+		return heldObject != null;
 
 	private var inputManager:InputManager;
 
