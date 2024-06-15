@@ -21,19 +21,28 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 
 # Milestone 3 goal : crafting plant spells and placing plants
 
-- Make a UI screen for crafting things
-- Able to convert materials into placeable plants (crafting)
+- [DONE] Make a UI screen for crafting things
+- [DONE] Able to convert materials into placeable plants (crafting)
  - Remember to subtract the resources from the player when crafting
   - After crafting make sure to refresh the inventory/crafting UI's so they are correct
-- Object placement system
- - Mouse implementation
+- [DONE] Object placement system
+ - [DONE] Can place objects after crafting
+ - [DONE] Mouse implementation
 
-# Milestone 3 goal : crafting plant spells and placing plants
+# Milestone 5 goal : refining the system & implementing plants
 
 - Object placement system
  - Gamepad implementation?
+ - Can move already placed objects
 - HUD?
  - Button on HUD to open crafting screen?
+- Rough art for plants
+ - Plant 1
+ - Plant 2
+ - Plant 3
+- Material art
+ - Material 1
+ - Material 2
 
  # Reference images
 

@@ -38,8 +38,8 @@ class ObjectPlacingSystem extends FlxBasic {
 		}
 
 		if (heldObject != null) {
-			heldObject.x = FlxG.mouse.x;
-			heldObject.y = FlxG.mouse.y;
+			heldObject.x = FlxG.mouse.x - heldObject.width / 2;
+			heldObject.y = FlxG.mouse.y - heldObject.height;
 		}
 	}
 }
