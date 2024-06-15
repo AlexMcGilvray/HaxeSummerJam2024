@@ -64,6 +64,8 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		// garbage implementation for now
 		for (key in craftingButtons.keys()) {
 			if (craftingButtons[key].justPressed) {
+				var requirements = key.getBuildRequirements();
+				playerInventory.subtractMaterials(requirements);
 				craftingSystem.spawnPlantIntoWorld(key, playerInventory);
 			}
 		}

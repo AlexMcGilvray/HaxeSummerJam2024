@@ -34,7 +34,6 @@ class CraftingSystem {
 	public function spawnPlantIntoWorld(craftDefinition:ICraftable, inventory:PlayerInventory):PlantBase {
 		var requirements = craftDefinition.getBuildRequirements();
 		if (inventory.hasMaterialRequirements(requirements)) {
-			inventory.subtractMaterials(requirements);
 			var plantWorldObject = craftDefinition.generatePlant();
 			objectPlacingSystem.attachHeldObject(plantWorldObject);
 			world.addPlantToWorld(plantWorldObject);

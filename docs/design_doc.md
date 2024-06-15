@@ -25,6 +25,7 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 - [DONE] Able to convert materials into placeable plants (crafting)
  - Remember to subtract the resources from the player when crafting
   - After crafting make sure to refresh the inventory/crafting UI's so they are correct
+  - Buttons need to say what they make
 - [DONE] Object placement system
  - [DONE] Can place objects after crafting
  - [DONE] Mouse implementation
@@ -43,6 +44,20 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 - Material art
  - Material 1
  - Material 2
+
+# Game design stuff
+
+## Creating biomes
+
+Maybe each patch of dirt can have certain thresholds that cause it to convert into a special environment. Special environments might have something like a blendable post processign effects and custom soundtracks. 
+
+Take this image of chrono tigger for example. Perhaps when you hit the forest biome requirements the following happens. 
+
+- We get animated light shafts breaking through when walking through the forst
+- Perhaps we darken and add some green tinting while in the forest
+- Custom forest music plays while in the forest
+
+![images/ref_chrono_trigger_light_shafts.png](images/ref_chrono_trigger_light_shafts.png)
 
  # Reference images
 
