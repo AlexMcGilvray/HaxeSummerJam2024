@@ -1,5 +1,6 @@
 package;
 
+import systems.ObjectPlacingSystem;
 import systems.PlayerInventory;
 import systems.PlayerInventoryUI;
 import systems.crafting.CraftingWorldPickup.CraftingMaterialWorldPickup;
@@ -24,6 +25,7 @@ class PlayState extends FlxState {
 	var inventory:PlayerInventory;
 	var playerInventoryUI:PlayerInventoryUI;
 	var craftingSystem:CraftingSystem;
+	var objectPlacingSystem:ObjectPlacingSystem;
 
 	override public function create():Void {
 		super.create();
@@ -31,7 +33,8 @@ class PlayState extends FlxState {
 		gameHUD = new GameHUD();
 		world = new World();
 		inputManager = new InputManager();
-		craftingSystem = new CraftingSystem(world);
+		objectPlacingSystem = new ObjectPlacingSystem(inputManager);
+		craftingSystem = new CraftingSystem(world, objectPlacingSystem);
 		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
 		inventory = new PlayerInventory();
@@ -43,6 +46,7 @@ class PlayState extends FlxState {
 
 		// non-visual components/systems
 		add(inputManager);
+		add(objectPlacingSystem);
 		// visible draw-order/dependent systems
 		add(world);
 		add(player);

@@ -6,9 +6,11 @@ import systems.plants.PlantBase;
 class CraftingSystem {
 	private var world:World;
 	private var craftableTypes:Array<ICraftable>;
+	private var objectPlacingSystem:ObjectPlacingSystem;
 
-	public function new(world:World) {
+	public function new(world:World, objectPlacingSystem:ObjectPlacingSystem) {
 		this.world = world;
+		this.objectPlacingSystem = objectPlacingSystem;
 		registerAllCraftableTypes();
 	}
 
@@ -34,8 +36,7 @@ class CraftingSystem {
 		if (inventory.hasMaterialRequirements(requirements)) {
 			inventory.subtractMaterials(requirements);
 			var plantWorldObject = craftDefinition.generatePlant();
-			plantWorldObject.x = 100; // temp
-			plantWorldObject.y = 100; // temp
+			objectPlacingSystem.attachHeldObject(plantWorldObject);
 			world.addPlantToWorld(plantWorldObject);
 			return plantWorldObject;
 		}

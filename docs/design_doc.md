@@ -19,10 +19,21 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  - [DONE] Player inventory system for tracking what materials have been picked up
   - [DONE] UI representation of player inventory?
 
-# Milestone 2 goal : crafting plant spells
+# Milestone 3 goal : crafting plant spells and placing plants
 
 - Make a UI screen for crafting things
 - Able to convert materials into placeable plants (crafting)
+ - Remember to subtract the resources from the player when crafting
+  - After crafting make sure to refresh the inventory/crafting UI's so they are correct
+- Object placement system
+ - Mouse implementation
+
+# Milestone 3 goal : crafting plant spells and placing plants
+
+- Object placement system
+ - Gamepad implementation?
+- HUD?
+ - Button on HUD to open crafting screen?
 
  # Reference images
 

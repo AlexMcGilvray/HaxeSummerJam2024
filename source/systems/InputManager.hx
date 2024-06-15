@@ -8,6 +8,7 @@ class InputManager extends FlxBasic {
 	public var direction:FlxPoint;
 	public var digitalButton1PressedThisFrame:Bool;
 	public var digitalButton2PressedThisFrame:Bool;
+	public var cursorButton1PressedThisFrame:Bool;
 
 	private var movementInputHandled:Bool;
 
@@ -23,6 +24,7 @@ class InputManager extends FlxBasic {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 		movementInputHandled = false;
+		cursorButton1PressedThisFrame = FlxG.mouse.justPressed; // right now this is not abstracted beyond the mouse
 		keyboardUpdate(elapsed);
 		gamepadUpdate(elapsed);
 		if (!movementInputHandled) {
