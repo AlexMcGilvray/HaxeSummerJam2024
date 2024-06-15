@@ -1,13 +1,18 @@
 package systems;
 
+import flixel.util.FlxSort;
+import flixel.FlxBasic;
+import systems.plants.PlantBase;
 import openfl.utils.Assets;
 import flixel.tile.FlxTilemap;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
-class World extends FlxTypedGroup<FlxTilemap> {
+class World extends FlxTypedGroup<FlxBasic> {
 	var worldTileMap:FlxTilemap;
 
-	public function getTileMap() {
+	var plants:FlxTypedGroup<PlantBase>;
+
+	public function getTileMap():FlxTilemap {
 		return worldTileMap;
 	}
 
@@ -17,6 +22,14 @@ class World extends FlxTypedGroup<FlxTilemap> {
 
 	public function getHeight() {
 		return worldTileMap.height;
+	}
+
+	public function addPlantToWorld(plant:PlantBase) {
+		plants.add(plant);
+	}
+
+	public function sortPlants() {
+		plants.sort(FlxSort.byY, FlxSort.ASCENDING);
 	}
 
 	public function new() {
@@ -34,5 +47,8 @@ class World extends FlxTypedGroup<FlxTilemap> {
 		// load map from our csv data
 		worldTileMap.loadMapFromArray(mapData, levelJson.width, levelJson.height, "assets/images/tilemap_world.png", 16, 16, OFF, 0, 0, 65);
 		add(worldTileMap);
+
+		plants = new FlxTypedGroup<PlantBase>();
+		add(plants);
 	}
 }

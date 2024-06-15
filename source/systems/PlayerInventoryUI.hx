@@ -1,5 +1,10 @@
 package systems;
 
+import systems.plants.Craftable.ICraftable;
+import flixel.ui.FlxButton;
+import systems.crafting.CraftingSystem;
+import flixel.FlxG;
+import flixel.FlxBasic;
 import flixel.util.FlxColor;
 import flixel.text.FlxBitmapText;
 import flixel.FlxSprite;
@@ -15,20 +20,110 @@ class MaterialTextPair {
 	}
 }
 
-class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
-	private var items:Map<String, MaterialTextPair>;
-	private var playerInventory:PlayerInventory;
-	private var inventoryNote:FlxBitmapText;
+class CraftingUI extends FlxTypedGroup<FlxSprite> {
 	private var background:FlxSprite;
+
+	private var playerInventory:PlayerInventory;
 	private var inputMangager:InputManager;
+	private var craftingSystem:CraftingSystem;
+	private var objectPlacingSystem:ObjectPlacingSystem;
 
-	var itemYOffset = 12;
+	private var craftingButtons:Map<ICraftable, FlxButton>;
+	var buttonCountMultiplier = 1;
 
-	public function new(playerInventory:PlayerInventory, inputMangager:InputManager) {
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem, objectPlacingSystem:ObjectPlacingSystem) {
 		super();
 
 		this.playerInventory = playerInventory;
 		this.inputMangager = inputMangager;
+		this.craftingSystem = craftingSystem;
+		this.objectPlacingSystem = objectPlacingSystem;
+
+		craftingButtons = new Map<ICraftable, FlxButton>();
+
+		var yStart = 10;
+		var bgWidth = 100;
+		var bgMargin = 10;
+		var yStartWPadding = yStart + 10;
+		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
+
+		background = new FlxSprite(xStartWPadding, yStart);
+		background.makeGraphic(bgWidth, 200, FlxColor.GRAY);
+		background.scrollFactor.x = 0;
+		background.scrollFactor.y = 0;
+
+		add(background);
+	}
+
+	function clearAllCraftingButtons() // todo implement me
+	{
+		for (button in craftingButtons) {
+			button.kill();
+		}
+		craftingButtons.clear();
+		buttonCountMultiplier = 1;
+	}
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+
+		var yStart = 10;
+		var bgWidth = 100;
+		var bgMargin = 10;
+		var yStartWPadding = yStart + 10;
+		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
+		// garbage implementation for now
+		if (!objectPlacingSystem.isHoldingObject) {
+			for (key in craftingButtons.keys()) {
+				if (craftingButtons[key].justPressed) {
+					if (craftingSystem.spawnPlantIntoWorld(key, playerInventory) != null) {
+						var requirements = key.getBuildRequirements();
+						playerInventory.subtractMaterials(requirements);
+						clearAllCraftingButtons();
+						break; // important because clearAllCraftingButtons modifies craftingButtons during iteration
+					}
+				}
+			}
+		}
+
+		function generateButtons() {
+			var buttonStride = 20;
+			for (item in craftingSystem.getAllCraftableTypes(playerInventory)) {
+				if (!craftingButtons.exists(item) && playerInventory.hasMaterialRequirements(item.getBuildRequirements())) {
+					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
+					button.text = item.getName();
+					add(button);
+					buttonCountMultiplier++;
+					craftingButtons.set(item, button);
+				}
+			}
+		}
+		generateButtons();
+	}
+}
+
+class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
+	private var items:Map<String, MaterialTextPair>;
+	private var inventoryNote:FlxBitmapText;
+	private var background:FlxSprite;
+
+	private var craftingUI:CraftingUI;
+
+	private var playerInventory:PlayerInventory;
+	private var inputMangager:InputManager;
+	private var objectPlacingSystem:ObjectPlacingSystem;
+
+	var itemYOffset = 12;
+
+	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem, objectPlacingSystem:ObjectPlacingSystem) {
+		super();
+
+		this.playerInventory = playerInventory;
+		this.inputMangager = inputMangager;
+		this.objectPlacingSystem = objectPlacingSystem;
+
+		craftingUI = new CraftingUI(playerInventory, inputMangager, craftingSystem, objectPlacingSystem);
+		craftingUI.visible = false;
 
 		items = new Map<String, MaterialTextPair>();
 
@@ -44,6 +139,12 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 
 		add(background);
 		add(inventoryNote);
+		add(craftingUI);
+	}
+
+	public function toggleUI() {
+		visible = !visible;
+		craftingUI.visible = visible;
 	}
 
 	override function update(elapsed:Float) {
@@ -51,7 +152,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 
 		// enable/disable the crafting materials list ui
 		if (inputMangager.digitalButton2PressedThisFrame) {
-			visible = !visible;
+			toggleUI();
 		}
 
 		function getMapSize():Int {
@@ -71,7 +172,7 @@ class PlayerInventoryUI extends FlxTypedGroup<FlxSprite> {
 		// very inefficient way to redraw the inventory list but hey.. this is a game jam :p
 		for (key in worldPickups.keys()) {
 			if (items.exists(key)) {
-				var numWorldPickups = worldPickups[key].length;
+				var numWorldPickups = worldPickups[key].count;
 				items[key].description.text = key;
 				items[key].value.text = "" + numWorldPickups;
 			} else {

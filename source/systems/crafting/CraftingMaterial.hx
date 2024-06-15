@@ -44,28 +44,3 @@ class CMPlantEssenceX implements ICraftingMaterialDefinition {
 		return sprite;
 	}
 }
-
-// You can inherit from this if you want to use placeholder graphics, otherwise
-//  just implement the interface directly
-abstract class DefaultCraftingMaterial implements ICraftingMaterialDefinition {
-	public function getMaterialWorldDropGraphic():FlxSprite {
-		throw new haxe.exceptions.NotImplementedException();
-	}
-
-	public function getMaterialUIGraphic():FlxSprite {
-		throw new haxe.exceptions.NotImplementedException();
-	}
-}
-
-// template
-// class CMPlantEssence implements ICraftingMaterialDefinition {
-//     public function getMaterialName():String {
-//         throw new haxe.exceptions.NotImplementedException();
-//     }
-//     public function getMaterialWorldDropGraphic():FlxSprite {
-// 		throw new haxe.exceptions.NotImplementedException();
-// 	}
-// 	public function getMaterialUIGraphic():FlxSprite {
-// 		throw new haxe.exceptions.NotImplementedException();
-// 	}
-// }
