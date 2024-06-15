@@ -9,6 +9,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class World extends FlxTypedGroup<FlxBasic> {
 	var worldTileMap:FlxTilemap;
 
+	var plants:FlxTypedGroup<PlantBase>;
+
 	public function getTileMap():FlxTilemap {
 		return worldTileMap;
 	}
@@ -22,7 +24,11 @@ class World extends FlxTypedGroup<FlxBasic> {
 	}
 
 	public function addPlantToWorld(plant:PlantBase) {
-		add(plant);
+		plants.add(plant);
+	}
+
+	private function sortPlants() {
+		// sort();
 	}
 
 	public function new() {
@@ -40,5 +46,8 @@ class World extends FlxTypedGroup<FlxBasic> {
 		// load map from our csv data
 		worldTileMap.loadMapFromArray(mapData, levelJson.width, levelJson.height, "assets/images/tilemap_world.png", 16, 16, OFF, 0, 0, 65);
 		add(worldTileMap);
+
+		plants = new FlxTypedGroup<PlantBase>();
+		add(plants);
 	}
 }
