@@ -13,10 +13,12 @@ class ObjectPlacingSystem extends FlxBasic {
 		return heldObject != null;
 
 	private var inputManager:InputManager;
+	private var world:World;
 
-	public function new(inputManager:InputManager) {
+	public function new(inputManager:InputManager, world:World) {
 		super();
 		this.inputManager = inputManager;
+		this.world = world;
 	}
 
 	public function attachHeldObject(obj:FlxObject) {
@@ -30,6 +32,7 @@ class ObjectPlacingSystem extends FlxBasic {
 	function releaseHeldObject() {
 		if (heldObject != null) {
 			heldObject = null;
+			world.sortPlants();
 		}
 	}
 

@@ -1,5 +1,6 @@
 package systems;
 
+import flixel.util.FlxSort;
 import flixel.FlxBasic;
 import systems.plants.PlantBase;
 import openfl.utils.Assets;
@@ -27,8 +28,8 @@ class World extends FlxTypedGroup<FlxBasic> {
 		plants.add(plant);
 	}
 
-	private function sortPlants() {
-		// sort();
+	public function sortPlants() {
+		plants.sort(FlxSort.byY, FlxSort.ASCENDING);
 	}
 
 	public function new() {

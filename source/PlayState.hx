@@ -35,7 +35,7 @@ class PlayState extends FlxState {
 		// cameraManager = new CameraManager();
 		world = new World();
 		inputManager = new InputManager();
-		objectPlacingSystem = new ObjectPlacingSystem(inputManager);
+		objectPlacingSystem = new ObjectPlacingSystem(inputManager, world);
 		craftingSystem = new CraftingSystem(world, objectPlacingSystem);
 		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
