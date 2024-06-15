@@ -42,13 +42,13 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		craftingButtons = new Map<ICraftable, FlxButton>();
 
 		var yStart = 10;
-		var bgWidth = 300;
+		var bgWidth = 100;
 		var bgMargin = 10;
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
 
 		background = new FlxSprite(xStartWPadding, yStart);
-		background.makeGraphic(250, 200, FlxColor.GRAY);
+		background.makeGraphic(bgWidth, 200, FlxColor.GRAY);
 		background.scrollFactor.x = 0;
 		background.scrollFactor.y = 0;
 
@@ -68,7 +68,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		super.update(elapsed);
 
 		var yStart = 10;
-		var bgWidth = 300;
+		var bgWidth = 100;
 		var bgMargin = 10;
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
