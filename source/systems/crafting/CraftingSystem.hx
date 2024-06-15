@@ -24,7 +24,8 @@ class CraftingSystem {
 	public function getAllCraftableTypes(inventory:PlayerInventory):Array<ICraftable> {
 		var retCraftable = new Array<ICraftable>();
 		for (craftable in craftableTypes) {
-			if (inventory.hasMaterialRequirements(craftable.getBuildRequirements())) {
+			var reqs = craftable.getBuildRequirements();
+			if (inventory.hasMaterialRequirements(reqs)) {
 				retCraftable.push(craftable);
 			}
 		}

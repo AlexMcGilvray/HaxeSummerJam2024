@@ -4,14 +4,16 @@ The main point of the game is to just plant a large garden by casting plant spel
 
 Due to time constraints there's currently no win/lose goal. You just gradually make a larger and more varied garden.
 
-# Milestone 1 goal : basic moving player and world
+# Planning and milestones
+
+## Milestone 1 goal : basic moving player and world
 
 - [DONE] Player that moves around
 - [DONE] World loaded from a map in tiled
 - [DONE] Grass system with cuttable grass
  - [DONE] Grass randomly emits dummy materials
 
-# Milestone 2 goal : materials
+## Milestone 2 goal : materials
 
 - [DONE] Crafting material definition
 - [DONE] Player can pickup crafting materials
@@ -19,7 +21,7 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  - [DONE] Player inventory system for tracking what materials have been picked up
   - [DONE] UI representation of player inventory?
 
-# Milestone 3 goal : crafting plant spells and placing plants
+## Milestone 3 goal : crafting plant spells and placing plants
 
 - [DONE] Make a UI screen for crafting things
 - [DONE] Able to convert materials into placeable plants (crafting)
@@ -31,7 +33,7 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  - [DONE] Can place objects after crafting
  - [DONE] Mouse implementation
 
-# Milestone 5 goal : refining the system & implementing plants
+## Milestone 4 goal : refining the system & implementing plants
 
 - Object placement system
  - Gamepad implementation?
@@ -57,6 +59,10 @@ Take this image of chrono tigger for example. Perhaps when you hit the forest bi
 - We get animated light shafts breaking through when walking through the forst
 - Perhaps we darken and add some green tinting while in the forest
 - Custom forest music plays while in the forest
+
+## Blendable environments
+
+The idea is similar to Unreal's blendables except this system wouldn't be limited to post processing, it would affect audio, music and other subtle vfx.
 
 ![images/ref_chrono_trigger_light_shafts.png](images/ref_chrono_trigger_light_shafts.png)
 

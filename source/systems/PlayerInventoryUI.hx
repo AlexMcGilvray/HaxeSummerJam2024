@@ -76,11 +76,12 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		if (!objectPlacingSystem.isHoldingObject) {
 			for (key in craftingButtons.keys()) {
 				if (craftingButtons[key].justPressed) {
-					var requirements = key.getBuildRequirements();
-					playerInventory.subtractMaterials(requirements);
-					craftingSystem.spawnPlantIntoWorld(key, playerInventory);
-					clearAllCraftingButtons();
-					break; // important because clearAllCraftingButtons modifies craftingButtons during iteration
+					if (craftingSystem.spawnPlantIntoWorld(key, playerInventory) != null) {
+						var requirements = key.getBuildRequirements();
+						playerInventory.subtractMaterials(requirements);
+						clearAllCraftingButtons();
+						break; // important because clearAllCraftingButtons modifies craftingButtons during iteration
+					}
 				}
 			}
 		}
@@ -88,7 +89,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		function generateButtons() {
 			var buttonStride = 20;
 			for (item in craftingSystem.getAllCraftableTypes(playerInventory)) {
-				if (!craftingButtons.exists(item)) {
+				if (!craftingButtons.exists(item) && playerInventory.hasMaterialRequirements(item.getBuildRequirements())) {
 					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
 					button.text = item.getName();
 					add(button);
