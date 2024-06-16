@@ -69,6 +69,8 @@ class PlayState extends FlxState {
 		FlxG.camera.follow(player);
 
 		FlxG.camera.flash();
+
+		FlxG.sound.playMusic("assets/music/main_music.ogg");
 	}
 
 	override public function update(elapsed:Float):Void {
