@@ -32,7 +32,7 @@ class CMPlantEssence implements ICraftingMaterialDefinition {
 	}
 }
 
-class CMPlantEssenceX implements ICraftingMaterialDefinition {
+class CMPurpleSurprise implements ICraftingMaterialDefinition {
 	public function new() {} // could make the argument these interfaces could be static?
 
 	public function getMaterialName():String {

@@ -1,6 +1,6 @@
 package systems;
 
-import systems.crafting.CraftingMaterial.CMPlantEssenceX;
+import systems.crafting.CraftingMaterial.CMPurpleSurprise;
 import systems.crafting.CraftingWorldPickup.CraftingMaterialWorldPickup;
 import systems.crafting.CraftingMaterial.CMPlantEssence;
 import flixel.FlxG;
@@ -38,7 +38,7 @@ class GrassTuft extends FlxSprite {
 		// roll dice to see if we spawn a material pickup
 		if (Math.random() > 0.8) {
 			if (Math.random() > 0.5) {
-				var matInterface = new CMPlantEssenceX();
+				var matInterface = new CMPurpleSurprise();
 				var pickup = new CraftingMaterialWorldPickup(matInterface, this.x, this.y);
 				worldPickupSystem.addWorldPickup(pickup);
 			} else {
