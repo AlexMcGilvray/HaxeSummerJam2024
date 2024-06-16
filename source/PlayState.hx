@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxCamera;
 import flixel.ui.FlxButton;
 import systems.ObjectPlacingSystem;
 import systems.PlayerInventory;
@@ -32,6 +33,7 @@ class PlayState extends FlxState {
 
 	override public function create():Void {
 		super.create();
+
 		// cameraManager = new CameraManager();
 		world = new World();
 		inputManager = new InputManager();
@@ -72,6 +74,14 @@ class PlayState extends FlxState {
 		// FlxG.worldBounds.set(0, 0, world.getWidth() * 16, world.getHeight() * 16);
 
 		FlxG.camera.flash();
+		// FlxG.camera.zoom = 2;
+
+		// TODO kinda ugly? maybe use the camera manger?
+		var uiCamera = new FlxCamera(0, 0, 640, 360); // TODO make game camera manager or something?
+		uiCamera.bgColor = 0x00000000;
+		FlxG.cameras.add(uiCamera, false);
+		playerInventoryUI.camera = uiCamera;
+		craftingButton.camera = uiCamera;
 	}
 
 	override public function update(elapsed:Float):Void {

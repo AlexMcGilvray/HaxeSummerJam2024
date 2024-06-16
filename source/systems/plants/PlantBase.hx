@@ -21,7 +21,7 @@ class PlantBase extends FlxSprite {
 
 	// override this to change the emit time
 	function getEmitTime():Float {
-		return 10;
+		return 30;
 	}
 
 	function onEmit() {

@@ -99,7 +99,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 				if (!craftingButtons.exists(item) && playerInventory.hasMaterialRequirements(item.getBuildRequirements())) {
 					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
 					// button.text = item.getName();
-					button.text = "Build";
+					button.text = "Craft";
 					// button.label.fieldWidth *= 2;
 					// button.label.alignment = FlxTextAlign.LEFT;
 					// button.scale.x = 2;

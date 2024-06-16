@@ -3,6 +3,8 @@ My entry for the haxe summer jam
 
 ## docs 
 
+[Planning](docs/planning.md)
+
 [Design doc](docs/design_doc.md)
 
 [Devlog](docs/devlog.md)
