@@ -1,3 +1,9 @@
+# 2024-06-16 0142
+
+Music is in, I hate a lot about it but I'm happy with where I got. 
+
+![images/music.png](images/music.png)
+
 # 2024-06-15 1934
 
 Got a lot of the work done that I'd hoped to get done in the scope of a jam. Also enough art that I now have to worry about crafting UI pagination.
