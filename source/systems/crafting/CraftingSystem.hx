@@ -46,7 +46,6 @@ class CraftingSystem {
 			var plantWorldObject = craftDefinition.generatePlant();
 			objectPlacingSystem.attachHeldObject(plantWorldObject);
 			world.addPlantToWorld(plantWorldObject);
-			FlxG.camera.shake();
 			return plantWorldObject;
 		}
 		return null; // todo fix this bad return value

@@ -33,6 +33,7 @@ class ObjectPlacingSystem extends FlxBasic {
 		if (heldObject != null) {
 			heldObject = null;
 			world.sortPlants();
+			FlxG.camera.shake(0.01, 0.2);
 		}
 	}
 
