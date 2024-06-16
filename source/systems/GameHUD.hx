@@ -36,12 +36,12 @@ class GameHUD extends FlxTypedContainer<FlxSprite> {
 		zoom2X = new FlxButton(0, 0);
 		zoom2X.text = "2X";
 
-		zoom4X = new FlxButton(0, 0);
-		zoom4X.text = "4X";
+		// zoom4X = new FlxButton(0, 0);
+		// zoom4X.text = "4X";
 
-		zoom1X.x = FlxG.width - zoom1X.width * 3;
-		zoom2X.x = FlxG.width - zoom1X.width * 2;
-		zoom4X.x = FlxG.width - zoom1X.width;
+		zoom1X.x = FlxG.width - zoom1X.width * 2;
+		zoom2X.x = FlxG.width - zoom1X.width;
+		// zoom4X.x = FlxG.width - zoom1X.width;
 
 		help = new FlxButton(0, 0);
 		help.text = "Help";
@@ -51,7 +51,7 @@ class GameHUD extends FlxTypedContainer<FlxSprite> {
 		add(craftingButton);
 		add(zoom1X);
 		add(zoom2X);
-		add(zoom4X);
+		// add(zoom4X);
 		add(help);
 	}
 
@@ -66,8 +66,8 @@ class GameHUD extends FlxTypedContainer<FlxSprite> {
 		if (zoom2X.justPressed) {
 			cameraManager.setZoomLevel(2);
 		}
-		if (zoom4X.justPressed) {
-			cameraManager.setZoomLevel(4);
-		}
+		// if (zoom4X.justPressed) {
+		// 	cameraManager.setZoomLevel(4);
+		// }
 	}
 }
