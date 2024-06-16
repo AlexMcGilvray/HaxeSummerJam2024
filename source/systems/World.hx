@@ -28,8 +28,14 @@ class World extends FlxTypedGroup<FlxBasic> {
 		plants.add(plant);
 	}
 
+	static inline function byCustom(Order:Int, val1:PlantBase, val2:PlantBase) {
+		return FlxSort.byValues(Order, val1.y + val1.height, val2.y + val2.height);
+	}
+
 	public function sortPlants() {
-		plants.sort(FlxSort.byY, FlxSort.ASCENDING);
+		// plants.sort(FlxSort.byY, FlxSort.ASCENDING);
+
+		plants.sort(byCustom, FlxSort.ASCENDING);
 	}
 
 	public function new() {
