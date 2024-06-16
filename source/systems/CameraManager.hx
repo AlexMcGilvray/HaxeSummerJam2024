@@ -14,7 +14,8 @@ class CameraManager {
 
 	public function initCameras() {
 		uiCamera = new FlxCamera(0, 0, FlxG.width, FlxG.height);
-		FlxG.cameras.add(uiCamera);
+		uiCamera.bgColor = 0x00000000;
+		FlxG.cameras.add(uiCamera, false);
 	}
 
 	public function registerWithUICamera(item:FlxBasic) {

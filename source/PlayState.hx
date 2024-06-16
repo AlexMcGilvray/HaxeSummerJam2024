@@ -34,7 +34,7 @@ class PlayState extends FlxState {
 	override public function create():Void {
 		super.create();
 
-		// cameraManager = new CameraManager();
+		cameraManager = new CameraManager();
 		world = new World();
 		inputManager = new InputManager();
 		worldPickupSystem = new WorldPickupSystem();
@@ -80,8 +80,8 @@ class PlayState extends FlxState {
 		var uiCamera = new FlxCamera(0, 0, 640, 360); // TODO make game camera manager or something?
 		uiCamera.bgColor = 0x00000000;
 		FlxG.cameras.add(uiCamera, false);
-		playerInventoryUI.camera = uiCamera;
-		craftingButton.camera = uiCamera;
+		cameraManager.registerWithUICamera(playerInventoryUI);
+		cameraManager.registerWithUICamera(craftingButton);
 	}
 
 	override public function update(elapsed:Float):Void {
