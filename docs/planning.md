@@ -6,7 +6,7 @@
     - Gamepad implementation?
     - Can move already placed objects
 - Crafting UI pagination
-- Music
+- [DONE][KINDOF] Music
  - ahhhhhhhh music is so hard!
 - SFX
 - Static help screen
