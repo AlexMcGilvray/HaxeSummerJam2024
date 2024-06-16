@@ -101,11 +101,11 @@ class CraftingUI extends FlxTypedContainer<FlxSprite> {
 					add(button);
 					craftingButtons.set(item, button);
 
-					var label = new FlxBitmapText(xStartWPadding + button.width, yStartWPadding + buttonCountMultiplier * buttonStride);
+					var label = new FlxBitmapText(xStartWPadding + button.width, yStart + buttonCountMultiplier * buttonStride);
 					label.text = item.getName();
 					label.scrollFactor.x = label.scrollFactor.y = 0;
 					label.scale.x = label.scale.y = 1.5;
-					label.y += 6;
+					label.y += 16; // some magic number bullshit
 					add(label);
 					labels.push(label);
 
@@ -130,6 +130,8 @@ class PlayerInventoryUI extends FlxTypedContainer<FlxBasic> {
 
 	var itemYOffset = 12;
 
+	private static inline var offsetY = 64.0;
+
 	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem, objectPlacingSystem:ObjectPlacingSystem) {
 		super();
 
@@ -142,7 +144,7 @@ class PlayerInventoryUI extends FlxTypedContainer<FlxBasic> {
 
 		items = new Map<String, MaterialTextPair>();
 
-		background = new FlxSprite(10, 10);
+		background = new FlxSprite(10, offsetY - itemYOffset);
 		background.scrollFactor.x = 0;
 		background.scrollFactor.y = 0;
 		background.visible = false;
@@ -191,8 +193,8 @@ class PlayerInventoryUI extends FlxTypedContainer<FlxBasic> {
 				items[key].description.text = key;
 				items[key].value.text = "" + numWorldPickups;
 			} else {
-				var descriptionText = new FlxBitmapText(16, 24 + getMapSize() * itemYOffset, key);
-				var valueText = new FlxBitmapText(140, 24 + getMapSize() * itemYOffset, "1");
+				var descriptionText = new FlxBitmapText(16, offsetY + getMapSize() * itemYOffset, key);
+				var valueText = new FlxBitmapText(140, offsetY + getMapSize() * itemYOffset, "1");
 				var pair = new MaterialTextPair(descriptionText, valueText);
 
 				items.set(key, pair);
@@ -214,7 +216,7 @@ class PlayerInventoryUI extends FlxTypedContainer<FlxBasic> {
 
 		// add message on how to close menu to bottom
 		inventoryNote.x = 16;
-		inventoryNote.y = 24 + (getMapSize() + 1) * itemYOffset;
+		inventoryNote.y = offsetY + (getMapSize() + 1) * itemYOffset;
 		inventoryNote.visible = true;
 
 		// size background to match content, also very wasteful/inefficient
