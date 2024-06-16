@@ -56,6 +56,10 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
     - Bigger tree 02
     - Bigger tree 01
     - Bigger tree 03
+- [DONE] Attract system for pickups
+- Crafting UI
+    - Make buttons wider to fit titles better
+ 
 
 ## Milestone x goal : 
 

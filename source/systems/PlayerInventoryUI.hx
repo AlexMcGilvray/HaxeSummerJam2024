@@ -1,5 +1,6 @@
 package systems;
 
+import flixel.text.FlxText.FlxTextAlign;
 import systems.plants.Craftable.ICraftable;
 import flixel.ui.FlxButton;
 import systems.crafting.CraftingSystem;
@@ -29,6 +30,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 	private var objectPlacingSystem:ObjectPlacingSystem;
 
 	private var craftingButtons:Map<ICraftable, FlxButton>;
+	private var labels:Array<FlxBitmapText>;
 	var buttonCountMultiplier = 1;
 
 	public function new(playerInventory:PlayerInventory, inputMangager:InputManager, craftingSystem:CraftingSystem, objectPlacingSystem:ObjectPlacingSystem) {
@@ -40,15 +42,16 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		this.objectPlacingSystem = objectPlacingSystem;
 
 		craftingButtons = new Map<ICraftable, FlxButton>();
+		labels = new Array<FlxBitmapText>();
 
 		var yStart = 10;
-		var bgWidth = 100;
+		var bgWidth = 250;
 		var bgMargin = 10;
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
 
 		background = new FlxSprite(xStartWPadding, yStart);
-		background.makeGraphic(bgWidth, 200, FlxColor.GRAY);
+		background.makeGraphic(bgWidth + bgMargin, 400, FlxColor.GRAY);
 		background.scrollFactor.x = 0;
 		background.scrollFactor.y = 0;
 
@@ -61,6 +64,10 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 			button.kill();
 		}
 		craftingButtons.clear();
+		for (label in labels) {
+			label.kill();
+		}
+		labels.resize(0);
 		buttonCountMultiplier = 1;
 	}
 
@@ -68,7 +75,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		super.update(elapsed);
 
 		var yStart = 10;
-		var bgWidth = 100;
+		var bgWidth = 250;
 		var bgMargin = 10;
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
@@ -91,10 +98,25 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 			for (item in craftingSystem.getAllCraftableTypes(playerInventory)) {
 				if (!craftingButtons.exists(item) && playerInventory.hasMaterialRequirements(item.getBuildRequirements())) {
 					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
-					button.text = item.getName();
+					// button.text = item.getName();
+					button.text = "Build";
+					// button.label.fieldWidth *= 2;
+					// button.label.alignment = FlxTextAlign.LEFT;
+					// button.scale.x = 2;
+					// button.width *= 2;
+					// button.height *= 2;
 					add(button);
-					buttonCountMultiplier++;
 					craftingButtons.set(item, button);
+
+					var label = new FlxBitmapText(xStartWPadding + button.width, yStartWPadding + buttonCountMultiplier * buttonStride);
+					label.text = item.getName();
+					label.scrollFactor.x = label.scrollFactor.y = 0;
+					label.scale.x = label.scale.y = 1.5;
+					label.y += 6;
+					add(label);
+					labels.push(label);
+
+					buttonCountMultiplier++;
 				}
 			}
 		}
