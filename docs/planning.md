@@ -30,9 +30,9 @@
 
 ## Milestone 4 goal : refining the system & implementing plants
 
-- HUD?
+- [DONE] HUD?
     - [DONE] Button on HUD to open crafting screen?
-- Rough art for plants
+- [DONE] Rough art for plants
     - [DONE] Bush 1
     - [DONE] Bush 2
     - [DONE] Bush 3
@@ -40,7 +40,7 @@
     - [DONE] Flower 2
     - [DONE] Flower 3
     - [DONE] Tree
-- Material art
+- [DONE] Material art
     - [DONE] Material 1
     - [DONE] Material 2
 - [DONE] After placing a plant, z-sort all the plants
