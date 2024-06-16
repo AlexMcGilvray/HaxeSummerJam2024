@@ -7,6 +7,7 @@
     - Can move already placed objects
 - Crafting UI pagination
 - Music
+ - ahhhhhhhh music is so hard!
 - SFX
 - Static help screen
 - Intro showing the help screen
