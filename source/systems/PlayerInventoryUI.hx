@@ -10,6 +10,7 @@ import flixel.util.FlxColor;
 import flixel.text.FlxBitmapText;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.group.FlxContainer.FlxTypedContainer;
 
 class MaterialTextPair {
 	public var description:FlxBitmapText;
@@ -21,7 +22,7 @@ class MaterialTextPair {
 	}
 }
 
-class CraftingUI extends FlxTypedGroup<FlxSprite> {
+class CraftingUI extends FlxTypedContainer<FlxSprite> {
 	private var background:FlxSprite;
 
 	private var playerInventory:PlayerInventory;
@@ -98,13 +99,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 			for (item in craftingSystem.getAllCraftableTypes(playerInventory)) {
 				if (!craftingButtons.exists(item) && playerInventory.hasMaterialRequirements(item.getBuildRequirements())) {
 					var button = new FlxButton(xStartWPadding, yStartWPadding + buttonCountMultiplier * buttonStride);
-					// button.text = item.getName();
 					button.text = "Craft";
-					// button.label.fieldWidth *= 2;
-					// button.label.alignment = FlxTextAlign.LEFT;
-					// button.scale.x = 2;
-					// button.width *= 2;
-					// button.height *= 2;
 					add(button);
 					craftingButtons.set(item, button);
 
@@ -124,7 +119,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 	}
 }
 
-class PlayerInventoryUI extends FlxTypedGroup<FlxBasic> {
+class PlayerInventoryUI extends FlxTypedContainer<FlxBasic> {
 	private var items:Map<String, MaterialTextPair>;
 	private var inventoryNote:FlxBitmapText;
 	private var background:FlxSprite;

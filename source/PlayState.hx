@@ -43,49 +43,37 @@ class PlayState extends FlxState {
 		objectPlacingSystem = new ObjectPlacingSystem(inputManager, world);
 		craftingSystem = new CraftingSystem(world, objectPlacingSystem, worldPickupSystem);
 		playerInventoryUI = new PlayerInventoryUI(inventory, inputManager, craftingSystem, objectPlacingSystem);
-		gameHUD = new GameHUD(playerInventoryUI);
+		gameHUD = new GameHUD(playerInventoryUI, cameraManager);
 		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);
 		player = new Player(inputManager, grassSystem);
 
 		cameraManager.registerWithUICamera(gameHUD);
+		cameraManager.registerWithUICamera(playerInventoryUI);
 
 		// non-visual components/systems
 		add(inputManager);
 		add(objectPlacingSystem);
+		add(cameraManager);
 		// visible draw-order/dependent systems
 		add(world);
 		add(player);
 		add(grassSystem);
 		add(grassTuftEmitter);
 		add(worldPickupSystem);
-		// add(gameHUD);
+		add(gameHUD);
 		add(playerInventoryUI);
-
-		craftingButton = new FlxButton(0, 0, "Crafting");
-		craftingButton.x = 4;
-		add(craftingButton);
 
 		grassSystem.populateWorld(world.getTileMap());
 
 		world.getTileMap().follow();
-		// FlxG.cameras.follow(player);
 		FlxG.camera.follow(player);
-		// FlxG.camera.zoom = .25;
-		// FlxG.worldBounds.set(0, 0, world.getWidth() * 16, world.getHeight() * 16);
 
 		FlxG.camera.flash();
-		// FlxG.camera.zoom = 2;
-
-		// cameraManager.registerWithUICamera(playerInventoryUI);
-		// cameraManager.registerWithUICamera(craftingButton);
 	}
 
 	override public function update(elapsed:Float):Void {
 		super.update(elapsed);
 		FlxG.overlap(player, worldPickupSystem, playerToWorldPickupOverlap);
-		if (craftingButton.justPressed) {
-			playerInventoryUI.toggleUI();
-		}
 		worldPickupSystem.attractTowardsPlayer(player, elapsed);
 	}
 
