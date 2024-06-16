@@ -34,9 +34,10 @@ class Player extends FlxSprite {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		if (inputManager.digitalButton1PressedThisFrame) {
-			grassSystem.cutGrass(this);
-		}
+		// is there much point of having to press a button?
+		// if (inputManager.digitalButton1PressedThisFrame) {
+		grassSystem.cutGrass(this);
+		// }
 
 		if (inputManager.moveInputRecievedThisFrame()) {
 			// determine most appropriate animation to play

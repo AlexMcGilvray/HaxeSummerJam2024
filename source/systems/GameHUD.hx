@@ -9,11 +9,14 @@ import flixel.FlxBasic;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+class HelpMenu extends FlxTypedContainer<FlxSprite> {}
+
 class GameHUD extends FlxTypedContainer<FlxSprite> {
 	var craftingButton:FlxButton;
 	var zoom1X:FlxButton;
 	var zoom2X:FlxButton;
 	var zoom4X:FlxButton;
+	var help:FlxButton;
 
 	private var playerInventoryUI:PlayerInventoryUI;
 	private var cameraManager:CameraManager;
@@ -40,10 +43,16 @@ class GameHUD extends FlxTypedContainer<FlxSprite> {
 		zoom2X.x = FlxG.width - zoom1X.width * 2;
 		zoom4X.x = FlxG.width - zoom1X.width;
 
+		help = new FlxButton(0, 0);
+		help.text = "Help";
+		help.x = FlxG.width - help.width;
+		help.y = FlxG.height - help.height;
+
 		add(craftingButton);
 		add(zoom1X);
 		add(zoom2X);
 		add(zoom4X);
+		add(help);
 	}
 
 	override function update(elapsed:Float) {
