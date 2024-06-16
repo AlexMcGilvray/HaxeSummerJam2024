@@ -8,6 +8,7 @@ class PlantBase extends FlxSprite {
 	public function new() {
 		super();
 		makeGraphic(64, 64, FlxColor.BROWN);
+		// scale.x = scale.y = 2;
 	}
 }
 

@@ -1,5 +1,6 @@
 package systems.crafting;
 
+import flixel.FlxG;
 import systems.plants.Craftable;
 import systems.plants.PlantBase;
 
@@ -45,6 +46,7 @@ class CraftingSystem {
 			var plantWorldObject = craftDefinition.generatePlant();
 			objectPlacingSystem.attachHeldObject(plantWorldObject);
 			world.addPlantToWorld(plantWorldObject);
+			FlxG.camera.shake();
 			return plantWorldObject;
 		}
 		return null; // todo fix this bad return value

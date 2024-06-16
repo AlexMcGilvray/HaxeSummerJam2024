@@ -70,6 +70,8 @@ class PlayState extends FlxState {
 		FlxG.camera.follow(player);
 		// FlxG.camera.zoom = .25;
 		// FlxG.worldBounds.set(0, 0, world.getWidth() * 16, world.getHeight() * 16);
+
+		FlxG.camera.flash();
 	}
 
 	override public function update(elapsed:Float):Void {

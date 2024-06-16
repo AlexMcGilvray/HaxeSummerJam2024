@@ -47,11 +47,18 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  - [DONE] Flower 1
  - [DONE] Flower 2
  - [DONE] Flower 3
- - Tree
+ - [DONE] Tree
 - Material art
  - Material 1
  - Material 2
 - [DONE] After placing a plant, z-sort all the plants
+
+## Milestone 5 goal : refining the system & implementing plants
+
+- Art
+ - Bigger tree 01
+ - Bigger tree 02
+ - Bigger tree 03
 
 # Game design stuff
 
