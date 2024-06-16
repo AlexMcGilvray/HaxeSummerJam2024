@@ -35,8 +35,8 @@ class GameHUD extends FlxTypedGroup<FlxSprite> {
 	}
 
 	override function update(elapsed:Float) {
-		// if (materialsButton.justPressed) {
-		// 	playerInventoryUI.toggleUI();
-		// }
+		if (materialsButton.justPressed) {
+			playerInventoryUI.toggleUI();
+		}
 	}
 }

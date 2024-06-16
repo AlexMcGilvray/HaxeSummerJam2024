@@ -80,7 +80,7 @@ class CraftingUI extends FlxTypedGroup<FlxSprite> {
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
 		// garbage implementation for now
-		if (!objectPlacingSystem.isHoldingObject) {
+		if (!objectPlacingSystem.isHoldingObject && visible) {
 			for (key in craftingButtons.keys()) {
 				if (craftingButtons[key].justPressed) {
 					if (craftingSystem.spawnPlantIntoWorld(key, playerInventory) != null) {

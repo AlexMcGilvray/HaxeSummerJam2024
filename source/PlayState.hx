@@ -17,7 +17,7 @@ import flixel.FlxState;
 import systems.crafting.CraftingSystem;
 
 class PlayState extends FlxState {
-	// var gameHUD:GameHUD;
+	var gameHUD:GameHUD;
 	var cameraManager:CameraManager;
 	var world:World;
 	var inputManager:InputManager;
@@ -43,11 +43,11 @@ class PlayState extends FlxState {
 		objectPlacingSystem = new ObjectPlacingSystem(inputManager, world);
 		craftingSystem = new CraftingSystem(world, objectPlacingSystem, worldPickupSystem);
 		playerInventoryUI = new PlayerInventoryUI(inventory, inputManager, craftingSystem, objectPlacingSystem);
-		// gameHUD = new GameHUD(playerInventoryUI);
+		gameHUD = new GameHUD(playerInventoryUI);
 		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);
 		player = new Player(inputManager, grassSystem);
 
-		// cameraManager.registerWithUICamera(gameHUD);
+		cameraManager.registerWithUICamera(gameHUD);
 
 		// non-visual components/systems
 		add(inputManager);
@@ -76,12 +76,8 @@ class PlayState extends FlxState {
 		FlxG.camera.flash();
 		// FlxG.camera.zoom = 2;
 
-		// TODO kinda ugly? maybe use the camera manger?
-		var uiCamera = new FlxCamera(0, 0, 640, 360); // TODO make game camera manager or something?
-		uiCamera.bgColor = 0x00000000;
-		FlxG.cameras.add(uiCamera, false);
-		cameraManager.registerWithUICamera(playerInventoryUI);
-		cameraManager.registerWithUICamera(craftingButton);
+		// cameraManager.registerWithUICamera(playerInventoryUI);
+		// cameraManager.registerWithUICamera(craftingButton);
 	}
 
 	override public function update(elapsed:Float):Void {
