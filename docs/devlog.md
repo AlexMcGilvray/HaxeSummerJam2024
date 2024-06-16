@@ -1,3 +1,7 @@
+# 2024-06-16 0339
+
+So tired, music is hard. Submitted. Will clean up UX issues etc tomorrow if I wake up before the submiision date. 
+
 # 2024-06-16 0142
 
 Music is in, I hate a lot about it but I'm happy with where I got. 

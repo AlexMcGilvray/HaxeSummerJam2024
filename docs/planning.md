@@ -7,13 +7,13 @@
     - Can move already placed objects
 - Crafting UI pagination
 - [DONE][KINDOF] Music
- - ahhhhhhhh music is so hard!
+ - [DONE] ahhhhhhhh music is so hard!
 - SFX
 - Static help screen
 - Intro showing the help screen
 - Spell VFX
-- Camera zoom
- - Will need to render UI to a different camera if we do this
+- [DONE] Camera zoom
+ - [DONE] Will need to render UI to a different camera if we do this
  
 ## Milestone 5 goal : refining the system & implementing plants
 
