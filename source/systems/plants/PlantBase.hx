@@ -24,3 +24,24 @@ class Plant_Tulip extends PlantBase {
 		makeGraphic(64, 64, FlxColor.PURPLE);
 	}
 }
+
+class Plant_OnigiriRed extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/onigiri_bush01.png");
+	}
+}
+
+class Plant_OnigiriPurple extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/onigiri_bush02.png");
+	}
+}
+
+class Plant_OnigiriDeepPurple extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/onigiri_bush03.png");
+	}
+}
