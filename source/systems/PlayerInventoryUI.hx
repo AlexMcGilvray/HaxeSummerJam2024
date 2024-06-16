@@ -1,6 +1,5 @@
 package systems;
 
-import flixel.text.FlxText.FlxTextAlign;
 import systems.plants.Craftable.ICraftable;
 import flixel.ui.FlxButton;
 import systems.crafting.CraftingSystem;
@@ -9,7 +8,6 @@ import flixel.FlxBasic;
 import flixel.util.FlxColor;
 import flixel.text.FlxBitmapText;
 import flixel.FlxSprite;
-import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxContainer.FlxTypedContainer;
 
 class MaterialTextPair {
@@ -51,7 +49,7 @@ class CraftingUI extends FlxTypedContainer<FlxSprite> {
 		var yStartWPadding = yStart + 10;
 		var xStartWPadding = FlxG.width - bgWidth - bgMargin;
 
-		background = new FlxSprite(xStartWPadding, yStart);
+		background = new FlxSprite(xStartWPadding, 0);
 		background.makeGraphic(bgWidth + bgMargin, 400, FlxColor.GRAY);
 		background.scrollFactor.x = 0;
 		background.scrollFactor.y = 0;
@@ -75,7 +73,7 @@ class CraftingUI extends FlxTypedContainer<FlxSprite> {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		var yStart = 10;
+		var yStart = 30;
 		var bgWidth = 250;
 		var bgMargin = 10;
 		var yStartWPadding = yStart + 10;

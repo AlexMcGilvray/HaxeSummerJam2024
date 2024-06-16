@@ -17,14 +17,14 @@
  
 ## Milestone 5 goal : refining the system & implementing plants
 
-- Art
+- [DONE] Art
     - [DONE] Bigger tree 02
     - [DONE] Bigger tree 01
     - [DONE] Mushroom 01
     - [DONE] Mushroom 02
     - [DONE] Mushroom 03
 - [DONE] Attract system for pickups
-- Crafting UI
+- [DONE] Crafting UI
     - [DONE] Make buttons wider to fit titles better
 - [DONE] Plants should have the option of periodically emitting materials
 
