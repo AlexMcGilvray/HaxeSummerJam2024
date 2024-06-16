@@ -22,6 +22,9 @@ class CraftingSystem {
 		craftableTypes.push(new Craftable_OnigiriRed());
 		craftableTypes.push(new Craftable_OnigiriPurple());
 		craftableTypes.push(new Craftable_OnigiriDeepPurple());
+		craftableTypes.push(new Craftable_ForestFlowerOrange());
+		craftableTypes.push(new Craftable_ForestFlowerPink());
+		craftableTypes.push(new Craftable_ForestFlowerPurple());
 	}
 
 	public function getAllCraftableTypes(inventory:PlayerInventory):Array<ICraftable> {

@@ -142,3 +142,75 @@ class Craftable_OnigiriDeepPurple implements ICraftable {
 		return "Deep Purple Onigiri Bush";
 	}
 }
+
+class Craftable_ForestFlowerOrange implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPlantEssenceX();
+
+		requirements.set(mat1.getMaterialName(), 2);
+		requirements.set(mat2.getMaterialName(), 1);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestFlowerOrange();
+	}
+
+	public function getName() {
+		return "Orange Forest Flower";
+	}
+}
+
+class Craftable_ForestFlowerPink implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPlantEssenceX();
+
+		requirements.set(mat1.getMaterialName(), 2);
+		requirements.set(mat2.getMaterialName(), 2);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestFlowerPink();
+	}
+
+	public function getName() {
+		return "Pink Forest Flower";
+	}
+}
+
+class Craftable_ForestFlowerPurple implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPlantEssenceX();
+
+		requirements.set(mat1.getMaterialName(), 2);
+		requirements.set(mat2.getMaterialName(), 3);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestFlowerPurple();
+	}
+
+	public function getName() {
+		return "Purple Forest Flower";
+	}
+}

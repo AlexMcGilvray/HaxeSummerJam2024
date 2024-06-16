@@ -45,3 +45,24 @@ class Plant_OnigiriDeepPurple extends PlantBase {
 		loadGraphic("assets/images/plants/onigiri_bush03.png");
 	}
 }
+
+class Plant_ForestFlowerOrange extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_flower_orange.png");
+	}
+}
+
+class Plant_ForestFlowerPink extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_flower_pink.png");
+	}
+}
+
+class Plant_ForestFlowerPurple extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_flower_purple.png");
+	}
+}
