@@ -18,11 +18,16 @@ class CMPlantEssence implements ICraftingMaterialDefinition {
 
 	public function setupMaterialWorldDropGraphic(sprite:FlxSprite):Void {
 		sprite.makeGraphic(16, 16, FlxColor.PINK);
+		sprite.loadGraphic("assets/images/materials/material_plant_essence.png", true, 16, 16);
+		sprite.animation.add("idle", [0, 1, 2, 3, 4], 16);
+		sprite.animation.play("idle");
 	}
 
 	public function getMaterialUIGraphic():FlxSprite {
 		var sprite = new FlxSprite();
-		sprite.makeGraphic(16, 16, FlxColor.PINK);
+		sprite.loadGraphic("assets/images/materials/material_plant_essence.png", true, 16, 16);
+		sprite.animation.add("idle", [0, 1, 2, 3, 4], 16);
+		sprite.animation.play("idle");
 		return sprite;
 	}
 }
@@ -35,12 +40,16 @@ class CMPlantEssenceX implements ICraftingMaterialDefinition {
 	}
 
 	public function setupMaterialWorldDropGraphic(sprite:FlxSprite):Void {
-		sprite.makeGraphic(16, 16, FlxColor.PURPLE);
+		sprite.loadGraphic("assets/images/materials/material_purple_surprise.png", true, 16, 16);
+		sprite.animation.add("idle", [0, 1, 2, 3, 4], 16);
+		sprite.animation.play("idle");
 	}
 
 	public function getMaterialUIGraphic():FlxSprite {
 		var sprite = new FlxSprite();
-		sprite.makeGraphic(16, 16, FlxColor.PURPLE);
+		sprite.loadGraphic("assets/images/materials/material_purple_surprise.png", true, 16, 16);
+		sprite.animation.add("idle", [0, 1, 2, 3, 4], 16);
+		sprite.animation.play("idle");
 		return sprite;
 	}
 }

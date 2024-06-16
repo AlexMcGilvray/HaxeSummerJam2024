@@ -1,6 +1,5 @@
 package systems.crafting;
 
-import flixel.FlxG;
 import systems.plants.Craftable;
 import systems.plants.PlantBase;
 
@@ -48,6 +47,6 @@ class CraftingSystem {
 			world.addPlantToWorld(plantWorldObject);
 			return plantWorldObject;
 		}
-		return null; // todo fix this bad return value
+		return null;
 	}
 }
