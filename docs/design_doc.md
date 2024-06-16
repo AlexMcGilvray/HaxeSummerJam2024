@@ -53,23 +53,24 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 ## Milestone 5 goal : refining the system & implementing plants
 
 - Art
-    - Bigger tree 02
-    - Bigger tree 01
-    - Bigger tree 03
-    - Mushroom 01
-    - Mushroom 02
-    - Mushroom 03
+    - [DONE] Bigger tree 02
+    - [DONE] Bigger tree 01
+    - [DONE] Mushroom 01
+    - [DONE] Mushroom 02
+    - [DONE] Mushroom 03
 - [DONE] Attract system for pickups
 - Crafting UI
     - [DONE] Make buttons wider to fit titles better
 - Plants should have the option of periodically emitting materials
- 
 
-## Milestone x goal : 
+## Milestone 6 goal : 
 
 - Object placement system
     - Gamepad implementation?
     - Can move already placed objects
+- Crafting UI pagination
+- Music
+- SFX
 
 # Game design stuff
 
