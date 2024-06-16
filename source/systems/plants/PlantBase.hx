@@ -88,3 +88,24 @@ class Plant_ForestTree03 extends PlantBase {
 		loadGraphic("assets/images/plants/forest_tree_03.png");
 	}
 }
+
+class Plant_ForestMushroomPurple extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_mushroom_purple.png");
+	}
+}
+
+class Plant_ForestMushroomBrown extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_mushroom_brown.png");
+	}
+}
+
+class Plant_ForestMushroomRed extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_mushroom_red.png");
+	}
+}

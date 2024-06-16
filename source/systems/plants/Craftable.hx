@@ -282,3 +282,70 @@ class Craftable_ForestTree03 implements ICraftable {
 		return "Forest Tree 03";
 	}
 }
+
+class Craftable_ForestMushroomPurple implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat2 = new CMPurpleSurprise();
+
+		requirements.set(mat2.getMaterialName(), 1);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestMushroomPurple();
+	}
+
+	public function getName() {
+		return "Purple Forst Mushroom";
+	}
+}
+
+class Craftable_ForestMushroomBrown implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+		var mat1 = new CMPlantEssence();
+
+		requirements.set(mat1.getMaterialName(), 2);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestMushroomBrown();
+	}
+
+	public function getName() {
+		return "Brown Forst Mushroom";
+	}
+}
+
+class Craftable_ForestMushroomRed implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPurpleSurprise();
+
+		requirements.set(mat1.getMaterialName(), 1);
+		requirements.set(mat2.getMaterialName(), 1);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestMushroomRed();
+	}
+
+	public function getName() {
+		return "Red Forst Mushroom";
+	}
+}
