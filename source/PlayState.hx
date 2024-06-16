@@ -80,6 +80,7 @@ class PlayState extends FlxState {
 		if (craftingButton.justPressed) {
 			playerInventoryUI.toggleUI();
 		}
+		worldPickupSystem.attractTowardsPlayer(player, elapsed);
 	}
 
 	private function playerToWorldPickupOverlap(a:Player, b:CraftingMaterialWorldPickup):Void {

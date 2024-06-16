@@ -10,7 +10,7 @@ interface ICraftingMaterialDefinition {
 }
 
 class CMPlantEssence implements ICraftingMaterialDefinition {
-	public function new() {} // could make the argument these interfaces could be static?
+	public function new() {}
 
 	public function getMaterialName():String {
 		return "Plant Essence";
@@ -33,7 +33,7 @@ class CMPlantEssence implements ICraftingMaterialDefinition {
 }
 
 class CMPurpleSurprise implements ICraftingMaterialDefinition {
-	public function new() {} // could make the argument these interfaces could be static?
+	public function new() {}
 
 	public function getMaterialName():String {
 		return "Purple surprise";

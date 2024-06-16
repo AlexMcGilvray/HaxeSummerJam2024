@@ -35,9 +35,6 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 
 ## Milestone 4 goal : refining the system & implementing plants
 
-- Object placement system
-    - Gamepad implementation?
-    - Can move already placed objects
 - HUD?
     - [DONE] Button on HUD to open crafting screen?
 - Rough art for plants
@@ -59,6 +56,12 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
     - Bigger tree 02
     - Bigger tree 01
     - Bigger tree 03
+
+## Milestone x goal : 
+
+- Object placement system
+    - Gamepad implementation?
+    - Can move already placed objects
 
 # Game design stuff
 
