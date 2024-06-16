@@ -1,3 +1,7 @@
+# 2024-06-15 1934
+
+Got a lot of the work done that I'd hoped to get done in the scope of a jam. Also enough art that I now have to worry about crafting UI pagination.
+
 # 2024-06-11 1554
 
 Cutting grass now emits a default crafting material pickup which the player can "pick up" but currently nothing happens. 

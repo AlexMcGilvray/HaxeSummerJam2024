@@ -61,7 +61,7 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
 - [DONE] Attract system for pickups
 - Crafting UI
     - [DONE] Make buttons wider to fit titles better
-- Plants should have the option of periodically emitting materials
+- [DONE] Plants should have the option of periodically emitting materials
 
 ## Milestone 6 goal : 
 
