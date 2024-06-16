@@ -234,3 +234,51 @@ class Craftable_ForestTree01 implements ICraftable {
 		return "Forest Tree 01";
 	}
 }
+
+class Craftable_ForestTree02 implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPurpleSurprise();
+
+		requirements.set(mat1.getMaterialName(), 4);
+		requirements.set(mat2.getMaterialName(), 3);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestTree02();
+	}
+
+	public function getName() {
+		return "Forest Tree 02";
+	}
+}
+
+class Craftable_ForestTree03 implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPurpleSurprise();
+
+		requirements.set(mat1.getMaterialName(), 3);
+		requirements.set(mat2.getMaterialName(), 4);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestTree03();
+	}
+
+	public function getName() {
+		return "Forest Tree 03";
+	}
+}

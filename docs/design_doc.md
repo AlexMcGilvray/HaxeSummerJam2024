@@ -56,9 +56,13 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
     - Bigger tree 02
     - Bigger tree 01
     - Bigger tree 03
+    - Mushroom 01
+    - Mushroom 02
+    - Mushroom 03
 - [DONE] Attract system for pickups
 - Crafting UI
-    - Make buttons wider to fit titles better
+    - [DONE] Make buttons wider to fit titles better
+- Plants should have the option of periodically emitting materials
  
 
 ## Milestone x goal : 

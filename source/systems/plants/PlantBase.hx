@@ -15,14 +15,14 @@ class PlantBase extends FlxSprite {
 class Plant_Rose extends PlantBase {
 	public function new() {
 		super();
-		makeGraphic(64, 64, FlxColor.RED);
+		loadGraphic("assets/images/plants/forest_flower_rose.png");
 	}
 }
 
 class Plant_Tulip extends PlantBase {
 	public function new() {
 		super();
-		makeGraphic(64, 64, FlxColor.PURPLE);
+		loadGraphic("assets/images/plants/forest_flower_tulip.png");
 	}
 }
 
@@ -72,5 +72,19 @@ class Plant_ForestTree01 extends PlantBase {
 	public function new() {
 		super();
 		loadGraphic("assets/images/plants/forest_tree_01.png");
+	}
+}
+
+class Plant_ForestTree02 extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_tree_02.png");
+	}
+}
+
+class Plant_ForestTree03 extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_tree_03.png");
 	}
 }
