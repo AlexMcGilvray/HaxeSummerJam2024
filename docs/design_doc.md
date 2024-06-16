@@ -39,11 +39,15 @@ Due to time constraints there's currently no win/lose goal. You just gradually m
  - Gamepad implementation?
  - Can move already placed objects
 - HUD?
- - Button on HUD to open crafting screen?
+ - [DONE] Button on HUD to open crafting screen?
 - Rough art for plants
- - Plant 1
- - Plant 2
- - Plant 3
+ - [DONE] Bush 1
+ - [DONE] Bush 2
+ - [DONE] Bush 3
+ - [DONE] Flower 1
+ - [DONE] Flower 2
+ - [DONE] Flower 3
+ - Tree
 - Material art
  - Material 1
  - Material 2

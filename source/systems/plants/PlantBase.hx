@@ -66,3 +66,10 @@ class Plant_ForestFlowerPurple extends PlantBase {
 		loadGraphic("assets/images/plants/forest_flower_purple.png");
 	}
 }
+
+class Plant_ForestTree01 extends PlantBase {
+	public function new() {
+		super();
+		loadGraphic("assets/images/plants/forest_tree_01.png");
+	}
+}

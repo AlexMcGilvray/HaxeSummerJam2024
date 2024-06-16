@@ -83,7 +83,7 @@ class Craftable_OnigiriRed implements ICraftable {
 
 		var mat2 = new CMPlantEssenceX();
 
-		requirements.set(mat2.getMaterialName(), 1);
+		requirements.set(mat2.getMaterialName(), 2);
 
 		return requirements;
 	}
@@ -105,7 +105,7 @@ class Craftable_OnigiriPurple implements ICraftable {
 
 		var mat1 = new CMPlantEssence();
 
-		requirements.set(mat1.getMaterialName(), 1);
+		requirements.set(mat1.getMaterialName(), 2);
 
 		return requirements;
 	}
@@ -128,8 +128,8 @@ class Craftable_OnigiriDeepPurple implements ICraftable {
 		var mat1 = new CMPlantEssence();
 		var mat2 = new CMPlantEssenceX();
 
-		requirements.set(mat1.getMaterialName(), 1);
-		requirements.set(mat2.getMaterialName(), 1);
+		requirements.set(mat1.getMaterialName(), 2);
+		requirements.set(mat2.getMaterialName(), 2);
 
 		return requirements;
 	}
@@ -150,10 +150,8 @@ class Craftable_ForestFlowerOrange implements ICraftable {
 		var requirements = new Map<String, Int>();
 
 		var mat1 = new CMPlantEssence();
-		var mat2 = new CMPlantEssenceX();
 
-		requirements.set(mat1.getMaterialName(), 2);
-		requirements.set(mat2.getMaterialName(), 1);
+		requirements.set(mat1.getMaterialName(), 1);
 
 		return requirements;
 	}
@@ -173,11 +171,9 @@ class Craftable_ForestFlowerPink implements ICraftable {
 	public function getBuildRequirements():Map<String, Int> {
 		var requirements = new Map<String, Int>();
 
-		var mat1 = new CMPlantEssence();
 		var mat2 = new CMPlantEssenceX();
 
-		requirements.set(mat1.getMaterialName(), 2);
-		requirements.set(mat2.getMaterialName(), 2);
+		requirements.set(mat2.getMaterialName(), 1);
 
 		return requirements;
 	}
@@ -200,8 +196,8 @@ class Craftable_ForestFlowerPurple implements ICraftable {
 		var mat1 = new CMPlantEssence();
 		var mat2 = new CMPlantEssenceX();
 
-		requirements.set(mat1.getMaterialName(), 2);
-		requirements.set(mat2.getMaterialName(), 3);
+		requirements.set(mat1.getMaterialName(), 1);
+		requirements.set(mat2.getMaterialName(), 1);
 
 		return requirements;
 	}
@@ -212,5 +208,29 @@ class Craftable_ForestFlowerPurple implements ICraftable {
 
 	public function getName() {
 		return "Purple Forest Flower";
+	}
+}
+
+class Craftable_ForestTree01 implements ICraftable {
+	public function new() {}
+
+	public function getBuildRequirements():Map<String, Int> {
+		var requirements = new Map<String, Int>();
+
+		var mat1 = new CMPlantEssence();
+		var mat2 = new CMPlantEssenceX();
+
+		requirements.set(mat1.getMaterialName(), 3);
+		requirements.set(mat2.getMaterialName(), 3);
+
+		return requirements;
+	}
+
+	public function generatePlant():PlantBase {
+		return new Plant_ForestTree01();
+	}
+
+	public function getName() {
+		return "Forest Tree 01";
 	}
 }

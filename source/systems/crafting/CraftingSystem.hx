@@ -25,6 +25,7 @@ class CraftingSystem {
 		craftableTypes.push(new Craftable_ForestFlowerOrange());
 		craftableTypes.push(new Craftable_ForestFlowerPink());
 		craftableTypes.push(new Craftable_ForestFlowerPurple());
+		craftableTypes.push(new Craftable_ForestTree01());
 	}
 
 	public function getAllCraftableTypes(inventory:PlayerInventory):Array<ICraftable> {
