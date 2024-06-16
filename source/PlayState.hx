@@ -35,11 +35,11 @@ class PlayState extends FlxState {
 		// cameraManager = new CameraManager();
 		world = new World();
 		inputManager = new InputManager();
-		objectPlacingSystem = new ObjectPlacingSystem(inputManager, world);
-		craftingSystem = new CraftingSystem(world, objectPlacingSystem);
-		var grassTuftEmitter = new GrassTuftEmitter();
 		worldPickupSystem = new WorldPickupSystem();
 		inventory = new PlayerInventory();
+		var grassTuftEmitter = new GrassTuftEmitter();
+		objectPlacingSystem = new ObjectPlacingSystem(inputManager, world);
+		craftingSystem = new CraftingSystem(world, objectPlacingSystem, worldPickupSystem);
 		playerInventoryUI = new PlayerInventoryUI(inventory, inputManager, craftingSystem, objectPlacingSystem);
 		// gameHUD = new GameHUD(playerInventoryUI);
 		grassSystem = new GrassSystem(grassTuftEmitter, worldPickupSystem);

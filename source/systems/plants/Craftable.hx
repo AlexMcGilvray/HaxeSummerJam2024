@@ -5,7 +5,7 @@ import systems.crafting.CraftingMaterial;
 
 interface ICraftable {
 	public function getBuildRequirements():Map<String, Int>;
-	public function generatePlant():PlantBase;
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase;
 	public function getName():String;
 }
 
@@ -21,8 +21,8 @@ class Craftable_PlantBase implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new PlantBase();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new PlantBase(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -42,8 +42,8 @@ class Craftable_Rose implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_Rose();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_Rose(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -66,8 +66,8 @@ class Craftable_Tulip implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_Tulip();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_Tulip(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -88,8 +88,8 @@ class Craftable_OnigiriRed implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_OnigiriRed();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_OnigiriRed(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -110,8 +110,8 @@ class Craftable_OnigiriPurple implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_OnigiriPurple();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_OnigiriPurple(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -134,8 +134,8 @@ class Craftable_OnigiriDeepPurple implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_OnigiriDeepPurple();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_OnigiriDeepPurple(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -156,8 +156,8 @@ class Craftable_ForestFlowerOrange implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestFlowerOrange();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestFlowerOrange(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -178,8 +178,8 @@ class Craftable_ForestFlowerPink implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestFlowerPink();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestFlowerPink(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -202,8 +202,8 @@ class Craftable_ForestFlowerPurple implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestFlowerPurple();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestFlowerPurple(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -226,8 +226,8 @@ class Craftable_ForestTree01 implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestTree01();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestTree01(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -250,8 +250,8 @@ class Craftable_ForestTree02 implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestTree02();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestTree02(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -274,8 +274,8 @@ class Craftable_ForestTree03 implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestTree03();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestTree03(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -296,8 +296,8 @@ class Craftable_ForestMushroomPurple implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestMushroomPurple();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestMushroomPurple(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -317,8 +317,8 @@ class Craftable_ForestMushroomBrown implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestMushroomBrown();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestMushroomBrown(worldPickupSystem);
 	}
 
 	public function getName() {
@@ -341,8 +341,8 @@ class Craftable_ForestMushroomRed implements ICraftable {
 		return requirements;
 	}
 
-	public function generatePlant():PlantBase {
-		return new Plant_ForestMushroomRed();
+	public function generatePlant(worldPickupSystem:WorldPickupSystem):PlantBase {
+		return new Plant_ForestMushroomRed(worldPickupSystem);
 	}
 
 	public function getName() {

@@ -4,13 +4,17 @@ import systems.plants.Craftable;
 import systems.plants.PlantBase;
 
 class CraftingSystem {
-	private var world:World;
 	private var craftableTypes:Array<ICraftable>;
-	private var objectPlacingSystem:ObjectPlacingSystem;
 
-	public function new(world:World, objectPlacingSystem:ObjectPlacingSystem) {
+	private var world:World;
+	private var objectPlacingSystem:ObjectPlacingSystem;
+	private var worldPickupSystem:WorldPickupSystem;
+
+	public function new(world:World, objectPlacingSystem:ObjectPlacingSystem, worldPickupSystem:WorldPickupSystem) {
 		this.world = world;
 		this.objectPlacingSystem = objectPlacingSystem;
+		this.worldPickupSystem = worldPickupSystem;
+
 		registerAllCraftableTypes();
 	}
 
@@ -47,7 +51,7 @@ class CraftingSystem {
 	public function spawnPlantIntoWorld(craftDefinition:ICraftable, inventory:PlayerInventory):PlantBase {
 		var requirements = craftDefinition.getBuildRequirements();
 		if (inventory.hasMaterialRequirements(requirements)) {
-			var plantWorldObject = craftDefinition.generatePlant();
+			var plantWorldObject = craftDefinition.generatePlant(worldPickupSystem);
 			objectPlacingSystem.attachHeldObject(plantWorldObject);
 			world.addPlantToWorld(plantWorldObject);
 			return plantWorldObject;
